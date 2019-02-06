@@ -11,7 +11,7 @@ const eventList = (props) => {
       renderItem={(info) => (
         <ListItem
           eventName={info.item.val}
-          onEventPressed={() => props.onEventDeleted(id)} />
+          onEventPressed={() => props.onEventDeleted(info.item.key)} />
       )} />
   );
 };

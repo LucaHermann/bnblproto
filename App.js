@@ -20,11 +20,11 @@ export default class App extends Component {
     });
   };
 
-  eventDeletedHandler = index => {
+  eventDeletedHandler = key => {
     this.setState(prevState => {
       return {
-        events: prevState.events.filter((event, id) => {
-          return id !== index;
+        events: prevState.events.filter((event) => {
+          return event.key !== key;
         })
       };
     });
