@@ -25,7 +25,7 @@ class EventInput extends Component {
         <TextInput 
           onChangeText={this.eventNameChangedHandler}
           value={this.state.eventName}
-          placeholder="Event Name"
+          placeholder="Add Event Name"
           style={styles.eventInput} />
         <Button 
           onPress={this.eventSubmitHandler}

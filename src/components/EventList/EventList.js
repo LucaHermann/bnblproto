@@ -10,9 +10,9 @@ const eventList = (props) => {
       data={props.events} 
       renderItem={(info) => (
         <ListItem
-          eventName={info.item.val}
+          eventName={info.item.name}
           eventImg={info.item.img}
-          onEventPressed={() => props.onEventDeleted(info.item.key)} />
+          onEventPressed={() => props.onEventSelected(info.item.key)} />
       )} />
   );
 };
