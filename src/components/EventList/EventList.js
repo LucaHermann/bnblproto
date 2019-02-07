@@ -11,6 +11,7 @@ const eventList = (props) => {
       renderItem={(info) => (
         <ListItem
           eventName={info.item.val}
+          eventImg={info.item.img}
           onEventPressed={() => props.onEventDeleted(info.item.key)} />
       )} />
   );

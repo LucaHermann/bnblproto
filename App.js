@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import EventInput from './src/components/EventInput/EventInput';
 import EventList from './src/components/EventList/EventList';
-
+import BnblImg from './src/assets/bnbl.jpg';
 export default class App extends Component {
   state = {
     events: []
@@ -14,7 +14,8 @@ export default class App extends Component {
       return {
         events: prevState.events.concat({
           key: Math.random(),
-          val: eventName
+          val: eventName,
+          img: BnblImg
         })
       };
     });
