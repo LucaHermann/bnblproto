@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native'; 
+import { StyleSheet, View, ImageBackground } from 'react-native'; 
 
 import EventInput from './src/components/EventInput/EventInput';
 import EventList from './src/components/EventList/EventList';
@@ -34,8 +34,10 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <EventInput onEventAdded={this.eventAddedHandler} />
-        <EventList events={this.state.events} onEventDeleted={this.eventDeletedHandler} />
+        <ImageBackground source={BnblImg} style={{width: '100%', height: '76%'}}>
+          <EventInput onEventAdded={this.eventAddedHandler} />
+          <EventList events={this.state.events} onEventDeleted={this.eventDeletedHandler} />
+        </ImageBackground>
       </View>
     );
   }
