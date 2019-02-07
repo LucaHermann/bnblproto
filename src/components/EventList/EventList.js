@@ -10,8 +10,8 @@ const eventList = (props) => {
       data={props.events} 
       renderItem={(info) => (
         <ListItem
-          eventName={info.item.name}
-          eventImg={info.item.img}
+          eventName={info.item.eventName}
+          eventImg={info.item.eventImage}
           onEventPressed={() => props.onEventSelected(info.item.key)} />
       )} />
   );

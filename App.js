@@ -16,8 +16,8 @@ export default class App extends Component {
       return {
         events: prevState.events.concat({
           key: Math.random(),
-          name: eventName,
-          img: {
+          eventName: eventName,
+          eventImage: {
             uri: "https://leptitrennais.fr/wp-content/uploads/2016/10/1795627_10156282798320176_4706613982959915360_n.jpg"
           }
         })
@@ -25,26 +25,41 @@ export default class App extends Component {
     });
   };
 
-  eventSelectedHandler = key => {
-    this.setState({prevState =>
-      selectedEvent: prevState.events.find(place => {
-        return event.key === key;
-      });
+  eventDeletedHandler = () => {
+    this.setState(prevState =>{
+      return {
+        events: prevState.events.filter(event =>{
+          return event.key !== prevState.selectedEvent.key;
+        }),
+        selectedEvent: null
+      };
     });
-    // this.setState(prevState => {
-    //   return {
-    //     events: prevState.events.filter((event) => {
-    //       return event.key !== key;
-    //     })
-    //   };
-    // });
   };
+
+  eventSelectedHandler = key => {
+    this.setState(prevState => {
+      return {
+        selectedEvent: prevState.events.find(event => {
+          return event.key === key;
+        })
+      };
+    });
+  };
+
+  modalClosedHandler = () => {
+    this.setState({
+      selectedEvent: null
+    })
+  }
 
   render() { 
     return (
       <View style={styles.container}>
-        <ImageBackground source={BnblImg} style={styles.imgBackground}>
-          <EventDetail selectedEvent={this.state.selecteEvent}/>
+        <ImageBackground source={BnblImg} style={styles.imgBackground} >
+          <EventDetail 
+            selectedEvent={this.state.selectedEvent} 
+            onItemDeleted={this.eventDeletedHandler}
+            onModalClosed={this.modalClosedHandler}/>
           <EventInput onEventAdded={this.eventAddedHandler} />
           <EventList 
             events={this.state.events}
