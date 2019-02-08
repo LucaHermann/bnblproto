@@ -64,18 +64,20 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   eventInput: {
+    alignItems: "center",
     width: "80%",
     borderBottomWidth: 1,
     borderBottomColor: "#000000"    
   },
   eventDescInput: {
     width: "80%",
+    alignItems: "center",
     marginTop: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#000000"   
   },
   eventButton: {
-    width: "20%"
+    width: "20%",
   },
   eventInputTitle: {
     fontWeight: "bold",
