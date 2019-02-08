@@ -3,20 +3,32 @@ import {StyleSheet, View, Button, TextInput} from 'react-native';
 
 class EventInput extends Component {
   state = {
-    eventName: ''
+    eventName: '',
+    eventDescription: ''
   }
+
+  eventDescriptionChangedHandler = value => {
+    this.setState({
+      eventDescription: value
+    });
+  };
 
   eventNameChangedHandler = value => {
     this.setState({
       eventName: value
     });
   };
-  
+
   eventSubmitHandler = () => {
     if (this.state.eventName.trim() === "") {
       return;
     }
-    this.props.onEventAdded(this.state.eventName);
+    const event = []
+    event.push({
+      name: this.state.eventName,
+      desc: this.state.eventDescription,
+    })
+    this.props.onEventAdded(event);
   }
 
   render () {
@@ -27,6 +39,11 @@ class EventInput extends Component {
           value={this.state.eventName}
           placeholder="Add Event Name"
           style={styles.eventInput} />
+        <TextInput 
+          onChangeText={this.eventDescriptionChangedHandler}
+          value={this.state.eventDescription} 
+          placeholder="Add Event Descripton" 
+          style={styles.eventDescInput} />
         <Button 
           onPress={this.eventSubmitHandler}
           title="Add"
@@ -35,18 +52,22 @@ class EventInput extends Component {
       </View>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
   inputContainer: {
     // flex: 1
     width: '100%',
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center"
   },
   eventInput: {
     width: "80%"
+  },
+  eventDescInput: {
+    width: "80%",
+    marginTop: 10
   },
   eventButton: {
     width: "20%"

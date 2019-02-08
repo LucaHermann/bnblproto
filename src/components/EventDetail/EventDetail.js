@@ -11,9 +11,11 @@ const eventDetail = (props) => {
           source={props.selectedEvent.eventImage} 
           style={styles.eventImage} />
         <Text style={styles.eventName}>{props.selectedEvent.eventName}</Text>
+        <Text style={styles.eventName}>{props.selectedEvent.eventDesc}</Text>
       </View>
     );
   }
+
 
   return (
     <Modal 
@@ -21,6 +23,7 @@ const eventDetail = (props) => {
       animationType="slide">
     <View style={styles.modalContainer}>
       {modalContent}
+      {}
         <View>
           <Button title="Delete" color="red" onPress={props.onItemDeleted} />
           <Button title="Close" color="#9d4cff" onPress={props.onModalClosed} />
