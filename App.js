@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ImageBackground } from 'react-native'; 
+import { StyleSheet, View, ImageBackground, ScrollView} from 'react-native'; 
 
 import EventInput from './src/components/EventInput/EventInput';
 import EventList from './src/components/EventList/EventList';
@@ -62,12 +62,14 @@ export default class App extends Component {
             selectedEvent={this.state.selectedEvent} 
             onItemDeleted={this.eventDeletedHandler}
             onModalClosed={this.modalClosedHandler}/>
-          <EventInput 
-            onEventAdded={this.eventAddedHandler} 
-            style={styles.eventInput}/>
-          <EventList 
-            events={this.state.events}
-            onEventSelected={this.eventSelectedHandler} />
+          <ScrollView>
+            <EventInput 
+              onEventAdded={this.eventAddedHandler} 
+              style={styles.eventInput}/>
+            <EventList 
+              events={this.state.events}
+              onEventSelected={this.eventSelectedHandler} />
+          </ScrollView>
         </ImageBackground>
       </View>
     );
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
   },
   imgBackground: {
     flex: 1,
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: null,
   }
 });

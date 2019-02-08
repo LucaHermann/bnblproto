@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, View, Image, Text, Button, StyleSheet } from 'react-native';
+import { Modal, View, ScrollView ,Image, Text, Button, StyleSheet } from 'react-native';
 
 const eventDetail = (props) => {
   let modalContent = null;
@@ -21,14 +21,14 @@ const eventDetail = (props) => {
     <Modal 
       visible={props.selectedEvent !== null}
       animationType="slide">
-    <View style={styles.modalContainer}>
+    <ScrollView style={styles.modalContainer}>
       {modalContent}
       {}
         <View style={styles.buttonContainer}>
           <Button title="Delete" color="red" onPress={props.onItemDeleted} />
           <Button title="Close" color="#9d4cff" onPress={props.onModalClosed} />
         </View>
-    </View>
+    </ScrollView>
   </Modal>
   );
 };
