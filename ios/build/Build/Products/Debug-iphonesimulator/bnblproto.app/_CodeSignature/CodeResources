@@ -4,26 +4,176 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>AppIcon60x60@2x.png</key>
+		<data>
+		I37g9XRzZYXiWNiqcxisgeOPZjU=
+		</data>
+		<key>Assets.car</key>
+		<data>
+		/x6BJTUAo8baSqmSZrgeHN100p4=
+		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		8R+bU4QjXJ9sXT4Fd393rY/1GdY=
+		x2SfklYPeANfHyJwvxLgVr1WP5Y=
+		</data>
+		<key>Frameworks/XCTest.framework/Info.plist</key>
+		<data>
+		DQ4GPJ7FuM6H+FaCC/2wxhPSGCQ=
+		</data>
+		<key>Frameworks/XCTest.framework/XCTest</key>
+		<data>
+		HK6asLJ70IK7E4e83e8R1gxACHo=
+		</data>
+		<key>Frameworks/XCTest.framework/_CodeSignature/CodeResources</key>
+		<data>
+		/8LQToTPOL9FsEsYDaACQ21Day0=
+		</data>
+		<key>Frameworks/XCTest.framework/en.lproj/InfoPlist.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TuBj57ZP6zBqcL9HttO2Rucaw9E=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/XCTest.framework/version.plist</key>
+		<data>
+		P6P66kW7+LvLIo4WHjXGltpT8CA=
+		</data>
+		<key>Frameworks/libXCTestBundleInject.dylib</key>
+		<data>
+		xKX69bDGMJa2TcU/BC9ypZ06rsI=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		+xs9ltbF1LVXkZDpXjX0LwVfVqM=
+		Ec2isvcRM7Q+QG+Q5VuWakWDBxY=
 		</data>
 		<key>PkgInfo</key>
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
 		</data>
+		<key>PlugIns/bnblprotoTests.xctest.dSYM/Contents/Info.plist</key>
+		<data>
+		x7lZha7kO2NYMtgPaM/9hk9v73w=
+		</data>
+		<key>PlugIns/bnblprotoTests.xctest.dSYM/Contents/Resources/DWARF/bnblprotoTests</key>
+		<data>
+		f6AmSyNJMduKbFbZ/KQOul+2LXs=
+		</data>
+		<key>PlugIns/bnblprotoTests.xctest/Info.plist</key>
+		<data>
+		mG2vRTU/ZGcED9tqhdb/H/oh+6U=
+		</data>
+		<key>PlugIns/bnblprotoTests.xctest/_CodeSignature/CodeResources</key>
+		<data>
+		M+WNCdN9CjTrwNtrfgGHMwcRG4Y=
+		</data>
+		<key>PlugIns/bnblprotoTests.xctest/bnblprotoTests</key>
+		<data>
+		Oa6ZJLtwoV/rUn9tiAzTeTW9DMA=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>AppIcon60x60@2x.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ByhGG7T3P00+GU6o0eLRKBzsfSBsrl8BIz/dEqwT+9w=
+			</data>
+		</dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zEeityLLGcVIC7CMO4+euEHu/UrORVKU9s/dwIKI1cc=
+			</data>
+		</dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			x4Iooyf58wPJmhQEO7iDVCsbHBlO3xdJrkOl0FPaz9o=
+			yGXuGKqVxBZNyMAvJMpPe8cW7mETZTxRE7mQQl+0O2s=
+			</data>
+		</dict>
+		<key>Frameworks/XCTest.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VfVpYXVjG5OK2j8J39CP2mIMg1P5eFaYkRIJ/Hb2RSQ=
+			</data>
+		</dict>
+		<key>Frameworks/XCTest.framework/XCTest</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			olgg9NXiZ2M1ifvjBR8uTJxtXlM5EacLdDrNxfmImoY=
+			</data>
+		</dict>
+		<key>Frameworks/XCTest.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			C7sJpbu4qpi8/rH5JYpdQYncotP69JQ9Fiu8jrHXYvU=
+			</data>
+		</dict>
+		<key>Frameworks/XCTest.framework/en.lproj/InfoPlist.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			89RGkjZaKuewYnjpzwhIswhqfrU8+pcEXqM/DHVrUmo=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/XCTest.framework/version.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2BV684CZjHtMZHxSiwC5qc/DGXv9WIOWUc9dEU/Q1pw=
+			</data>
+		</dict>
+		<key>Frameworks/libXCTestBundleInject.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jJ/zKe1SwWk9KkZ4MXV01NPW4QiHpU1aZhpfTDknkp0=
+			</data>
+		</dict>
+		<key>PlugIns/bnblprotoTests.xctest.dSYM/Contents/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			UhwxdKZ+AG2Q2g13e8NG80dLYZhj0vQ8V6b0HbGn45g=
+			</data>
+		</dict>
+		<key>PlugIns/bnblprotoTests.xctest.dSYM/Contents/Resources/DWARF/bnblprotoTests</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/7G3nfmLmVZeiYCQxUYAwGYTw4f2SC+7JcI77TJSm+k=
+			</data>
+		</dict>
+		<key>PlugIns/bnblprotoTests.xctest/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vKoVzXjPR7sC9B8fyu+ZF8naCxP1HzqW++1zwWlbwFc=
+			</data>
+		</dict>
+		<key>PlugIns/bnblprotoTests.xctest/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			cQmdET2iKdY8PJS/QRGfuZGv/T/PVEsKmmu6iInPQAc=
+			</data>
+		</dict>
+		<key>PlugIns/bnblprotoTests.xctest/bnblprotoTests</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9+a/A0+stSOxyf7EdbKjCMSFilQRY4ARSnAgbcHzMIY=
 			</data>
 		</dict>
 	</dict>
