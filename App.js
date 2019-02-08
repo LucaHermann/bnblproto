@@ -4,7 +4,7 @@ import { StyleSheet, View, ImageBackground } from 'react-native';
 import EventInput from './src/components/EventInput/EventInput';
 import EventList from './src/components/EventList/EventList';
 import EventDetail from './src/components/EventDetail/EventDetail';
-import BnblImg from './src/assets/bnbl.jpg';
+import BnblImg from './src/assets/bnblCorbo.jpg';
 
 export default class App extends Component {
   state = {
@@ -20,7 +20,7 @@ export default class App extends Component {
           eventName: eventName[0].name,
           eventDesc: eventName[0].desc,
           eventImage: {
-            uri: "https://leptitrennais.fr/wp-content/uploads/2016/10/1795627_10156282798320176_4706613982959915360_n.jpg"
+            uri: "https://yt3.ggpht.com/a-/ACSszfH3aFJWQIkARyD7el6nla1dR8lj7n8A7CIYTQ=s900-mo-c-c0xffffffff-rj-k-no"
           }
         })
       };
@@ -62,7 +62,9 @@ export default class App extends Component {
             selectedEvent={this.state.selectedEvent} 
             onItemDeleted={this.eventDeletedHandler}
             onModalClosed={this.modalClosedHandler}/>
-          <EventInput onEventAdded={this.eventAddedHandler} />
+          <EventInput 
+            onEventAdded={this.eventAddedHandler} 
+            style={styles.eventInput}/>
           <EventList 
             events={this.state.events}
             onEventSelected={this.eventSelectedHandler} />
@@ -75,10 +77,12 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 25,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#fff',
+  },
+  eventInput: {
+    marginTop: 5
   },
   imgBackground: {
     flex: 1,

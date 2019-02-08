@@ -11,7 +11,7 @@ const eventDetail = (props) => {
           source={props.selectedEvent.eventImage} 
           style={styles.eventImage} />
         <Text style={styles.eventName}>{props.selectedEvent.eventName}</Text>
-        <Text style={styles.eventName}>{props.selectedEvent.eventDesc}</Text>
+        <Text style={styles.eventDesc}>{props.selectedEvent.eventDesc}</Text>
       </View>
     );
   }
@@ -24,7 +24,7 @@ const eventDetail = (props) => {
     <View style={styles.modalContainer}>
       {modalContent}
       {}
-        <View>
+        <View style={styles.buttonContainer}>
           <Button title="Delete" color="red" onPress={props.onItemDeleted} />
           <Button title="Close" color="#9d4cff" onPress={props.onModalClosed} />
         </View>
@@ -37,6 +37,11 @@ styles = StyleSheet.create({
   modalContainer: {
     margin: 25
   },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center"
+  },
   eventImage: {
     width: "100%",
     height: 250
@@ -45,6 +50,9 @@ styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 28
+  },
+  eventDesc: {
+    textAlign: "center"
   }
 });
 

@@ -16,7 +16,7 @@ const listEvent = (props) => (
 const styles = StyleSheet.create({
   eventItem: {
     width: "100%",
-    padding: 10,
+    padding: 7,
     marginTop: 5,
     backgroundColor: "#eee",
     flexDirection: "row",

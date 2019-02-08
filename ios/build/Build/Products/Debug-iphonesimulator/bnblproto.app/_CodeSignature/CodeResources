@@ -10,11 +10,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		/x6BJTUAo8baSqmSZrgeHN100p4=
+		Q3nvuJG+U5COTS7NqDiUw6Mp5yw=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		x2SfklYPeANfHyJwvxLgVr1WP5Y=
+		bdrlb/3hFSGWj8elCZZNeCi3NnU=
 		</data>
 		<key>Frameworks/XCTest.framework/Info.plist</key>
 		<data>
@@ -59,7 +59,7 @@
 		</data>
 		<key>PlugIns/bnblprotoTests.xctest.dSYM/Contents/Resources/DWARF/bnblprotoTests</key>
 		<data>
-		f6AmSyNJMduKbFbZ/KQOul+2LXs=
+		TkqK0VEJVuOvVM+nL8kYH+N2kmI=
 		</data>
 		<key>PlugIns/bnblprotoTests.xctest/Info.plist</key>
 		<data>
@@ -71,7 +71,7 @@
 		</data>
 		<key>PlugIns/bnblprotoTests.xctest/bnblprotoTests</key>
 		<data>
-		Oa6ZJLtwoV/rUn9tiAzTeTW9DMA=
+		xt35uO9ycVJdYy3FzX9tXgIMJpc=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -87,14 +87,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zEeityLLGcVIC7CMO4+euEHu/UrORVKU9s/dwIKI1cc=
+			vINOpimmHUWHzwBiT06ZxN8xrz1UMD8DDWpJzN+7HdY=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yGXuGKqVxBZNyMAvJMpPe8cW7mETZTxRE7mQQl+0O2s=
+			gzAarUdl2okr89/w04xm3AU5njX05py3ottKbSURZ64=
 			</data>
 		</dict>
 		<key>Frameworks/XCTest.framework/Info.plist</key>
@@ -152,7 +152,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/7G3nfmLmVZeiYCQxUYAwGYTw4f2SC+7JcI77TJSm+k=
+			04oZYUyrS18Jmg9DZLOwham7cCbUYg3XtY7+G/fTELk=
 			</data>
 		</dict>
 		<key>PlugIns/bnblprotoTests.xctest/Info.plist</key>
@@ -173,7 +173,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9+a/A0+stSOxyf7EdbKjCMSFilQRY4ARSnAgbcHzMIY=
+			IYO9JI/+pY/DUYJjIZ69Spw+AqBCYYi6X6+XxVrmRuY=
 			</data>
 		</dict>
 	</dict>
