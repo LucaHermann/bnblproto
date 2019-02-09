@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ImageBackground, ScrollView} from 'react-native'; 
+import { StyleSheet, View, ImageBackground, ScrollView} from 'react-native';
 
 import EventInput from './src/components/EventInput/EventInput';
 import EventList from './src/components/EventList/EventList';

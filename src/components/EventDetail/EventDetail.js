@@ -23,7 +23,6 @@ const eventDetail = (props) => {
       animationType="slide">
     <ScrollView style={styles.modalContainer}>
       {modalContent}
-      {}
         <View style={styles.buttonContainer}>
           <Button title="Delete" color="red" onPress={props.onItemDeleted} />
           <Button title="Close" color="#9d4cff" onPress={props.onModalClosed} />
