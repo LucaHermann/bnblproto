@@ -9,12 +9,13 @@ const initialState = {
 const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EVENT:
-      return {
+    // alert(JSON.stringify(action))
+    return {
         ...state,
         events: state.events.concat({
           key: Math.random(),
-          eventName: action.eventName[0].name, // ou action.eventName
-          eventDesc: action.eventName[0].desc, // ou action.eventDesc
+          eventName: action.eventName,
+          eventDesc: action.eventDesc,
           eventImage: {
             uri: "https://yt3.ggpht.com/a-/ACSszfH3aFJWQIkARyD7el6nla1dR8lj7n8A7CIYTQ=s900-mo-c-c0xffffffff-rj-k-no"
           }
@@ -38,7 +39,7 @@ const eventsReducer = (state = initialState, action) => {
     case UNSELECT_EVENT:
       return {
         ...state,
-        selectEvent: null
+        selectedEvent: null
       };
     default:
       return state;

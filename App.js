@@ -1,57 +1,29 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ImageBackground, ScrollView} from 'react-native';
+import { connect } from "react-redux"
 
 import EventInput from './src/components/EventInput/EventInput';
 import EventList from './src/components/EventList/EventList';
 import EventDetail from './src/components/EventDetail/EventDetail';
+import { addEvent, deleteEvent, selectEvent, unselectEvent } from './src/store/actions/index';
 import BnblImg from './src/assets/bnblCorbo.jpg';
 
-export default class App extends Component {
-  state = {
-    events: [],
-    selectedEvent: null
-  }
-
-  eventAddedHandler = ( eventName )=> {
-    this.setState(prevState => {
-      return {
-        events: prevState.events.concat({
-          key: Math.random(),
-          eventName: eventName[0].name,
-          eventDesc: eventName[0].desc,
-          eventImage: {
-            uri: "https://yt3.ggpht.com/a-/ACSszfH3aFJWQIkARyD7el6nla1dR8lj7n8A7CIYTQ=s900-mo-c-c0xffffffff-rj-k-no"
-          }
-        })
-      };
-    });
+class App extends Component {
+  eventAddedHandler = eventName => {
+    this.props.onAddEvent(eventName);
+    alert(eventName[0].name);
   };
 
   eventDeletedHandler = () => {
-    this.setState(prevState =>{
-      return {
-        events: prevState.events.filter(event =>{
-          return event.key !== prevState.selectedEvent.key;
-        }),
-        selectedEvent: null
-      };
-    });
+    this.props.onDeleteEvent();
   };
 
   eventSelectedHandler = key => {
-    this.setState(prevState => {
-      return {
-        selectedEvent: prevState.events.find(event => {
-          return event.key === key;
-        })
-      };
-    });
+    this.props.onSelectedEvent(key);
   };
 
   modalClosedHandler = () => {
-    this.setState({
-      selectedEvent: null
-    })
+    this.props.onUnselectEvent();
   }
 
   render() { 
@@ -59,7 +31,7 @@ export default class App extends Component {
       <View style={styles.container}>
         <ImageBackground source={BnblImg} style={styles.imgBackground} >
           <EventDetail 
-            selectedEvent={this.state.selectedEvent} 
+            selectedEvent={this.props.selectedEvent} 
             onItemDeleted={this.eventDeletedHandler}
             onModalClosed={this.modalClosedHandler} />
           <ScrollView>
@@ -67,7 +39,7 @@ export default class App extends Component {
               onEventAdded={this.eventAddedHandler} 
               style={styles.eventInput} />
             <EventList 
-              events={this.state.events}
+              events={this.props.events}
               onEventSelected={this.eventSelectedHandler} />
           </ScrollView>
         </ImageBackground>
@@ -92,3 +64,21 @@ const styles = StyleSheet.create({
     height: null,
   }
 });
+
+const mapStateToProps = state => {
+  return {
+    events: state.events.events,
+    selectedEvent: state.events.selectedEvent
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddEvent: (name) => dispatch(addEvent(name)),
+    onDeleteEvent: () => dispatch(deleteEvent()),
+    onSelectedEvent: (key) => dispatch(selectEvent(key)),
+    onUnselectEvent: () => dispatch(unselectEvent())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
