@@ -6,7 +6,7 @@ const initialState = {
   selectedEvent: null
 }
 
-const reducer = (state = initialState, action) => {
+const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EVENT:
       return {
@@ -45,4 +45,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default eventsReducer;
