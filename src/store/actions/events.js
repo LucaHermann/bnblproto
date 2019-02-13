@@ -7,23 +7,21 @@ export const addEvent = (eventName) => {
   };
 };
 
-export const deleteEvent = (eventName) => {
+export const deleteEvent = () => {
   return {
-    type: DELETE_EVENT,
-    eventName: eventName
+    type: DELETE_EVENT
   };
 };
 
-export const selectEvent = (eventName) => {
+export const selectEvent = (key) => {
   return {
     type: SELECT_EVENT,
-    eventName: eventName
+    eventKey: key
   };
 };
 
-export const unselectEvent = (eventName) => {
+export const unselectEvent = () => {
   return {
-    type: UNSELECT_EVENT,
-    eventName: eventName
+    type: UNSELECT_EVENT
   };
 };
