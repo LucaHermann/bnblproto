@@ -61,11 +61,11 @@ export default class App extends Component {
           <EventDetail 
             selectedEvent={this.state.selectedEvent} 
             onItemDeleted={this.eventDeletedHandler}
-            onModalClosed={this.modalClosedHandler}/>
+            onModalClosed={this.modalClosedHandler} />
           <ScrollView>
             <EventInput 
               onEventAdded={this.eventAddedHandler} 
-              style={styles.eventInput}/>
+              style={styles.eventInput} />
             <EventList 
               events={this.state.events}
               onEventSelected={this.eventSelectedHandler} />
