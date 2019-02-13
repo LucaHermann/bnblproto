@@ -1,4 +1,5 @@
 import { ADD_EVENT, DELETE_EVENT, SELECT_EVENT, UNSELECT_EVENT } from '../actions/actionTypes';
+import { selectEvent } from '../actions/events';
 
 const initialState = {
   events: [],
@@ -12,8 +13,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         events: state.events.concat({
           key: Math.random(),
-          eventName: action.eventName[0].name,
-          eventDesc: action.eventName[0].desc,
+          eventName: action.eventName[0].name, // ou action.eventName
+          eventDesc: action.eventName[0].desc, // ou action.eventDesc
           eventImage: {
             uri: "https://yt3.ggpht.com/a-/ACSszfH3aFJWQIkARyD7el6nla1dR8lj7n8A7CIYTQ=s900-mo-c-c0xffffffff-rj-k-no"
           }
@@ -26,7 +27,19 @@ const reducer = (state = initialState, action) => {
           return event.key !== state.selectedEvent.key;
         }),
         selectedEvent: null
-      }
+      };
+    case SELECT_EVENT:
+      return {
+        ...state,
+          selectedEvent: state.events.find(event => {
+            return event.key === action.eventKey;
+          })
+        };
+    case UNSELECT_EVENT:
+      return {
+        ...state,
+        selectEvent: null
+      };
     default:
       return state;
   }
