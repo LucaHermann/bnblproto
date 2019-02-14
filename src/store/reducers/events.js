@@ -9,8 +9,7 @@ const initialState = {
 const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EVENT:
-    // alert(JSON.stringify(action))
-    return {
+      return {
         ...state,
         events: state.events.concat({
           key: Math.random(),

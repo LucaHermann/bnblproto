@@ -34,7 +34,7 @@ const eventDetail = (props) => {
 
 styles = StyleSheet.create({
   modalContainer: {
-    margin: 25
+    marginTop: 25
   },
   buttonContainer: {
     flexDirection: "row",

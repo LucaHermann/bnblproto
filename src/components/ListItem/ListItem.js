@@ -8,7 +8,7 @@ const listEvent = (props) => (
         source={props.eventImg}
         style={styles.eventImg}
         resizeMode="cover" />
-      <Text>{props.eventName}</Text>
+      <Text style={styles.textFont}>{props.eventName}</Text>
     </View>
   </TouchableOpacity>
 );
@@ -25,6 +25,12 @@ const styles = StyleSheet.create({
   eventImg: {
     width: 30,
     height: 30
+  },
+  textFont: {
+    marginLeft: 15,
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 18
   }
 });
 

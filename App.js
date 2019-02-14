@@ -11,7 +11,6 @@ import BnblImg from './src/assets/bnblCorbo.jpg';
 class App extends Component {
   eventAddedHandler = eventName => {
     this.props.onAddEvent(eventName);
-    alert(eventName[0].name);
   };
 
   eventDeletedHandler = () => {
