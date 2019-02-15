@@ -15,9 +15,9 @@ const listEvent = (props) => (
 
 const styles = StyleSheet.create({
   eventItem: {
-    width: "100%",
+    width: "95%",
     padding: 7,
-    marginTop: 5,
+    margin: 5,
     backgroundColor: "#eee",
     flexDirection: "row",
     alignItems: "flex-start"
@@ -28,9 +28,10 @@ const styles = StyleSheet.create({
   },
   textFont: {
     marginLeft: 15,
+    marginTop: 4,
     fontWeight: "bold",
     textAlign: "center",
-    fontSize: 18
+    fontSize: 17
   }
 });
 

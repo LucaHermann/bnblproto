@@ -40,6 +40,7 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* bnblprotoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* bnblprotoTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+		484F073C2216D6FE00BC4329 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 484F073B2216D6FE00BC4329 /* Ionicons.ttf */; };
 		4D1B346CBCE1416A9CBA51B5 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5DF90399B1D4E2699D8DA2E /* FontAwesome.ttf */; };
 		50BBC68E694B414D93BEA24D /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECFCDF7946204AD2B198ABDA /* Ionicons.ttf */; };
 		72380CED6C5642FC8C849A8D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C3036E598034374B74CADD7 /* SimpleLineIcons.ttf */; };
@@ -376,6 +377,7 @@
 		2D02E47B1E0B4A5D006451C7 /* bnblproto-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bnblproto-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* bnblproto-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bnblproto-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		484F073B2216D6FE00BC4329 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		48B8D3C6197141CF981A4175 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		5AAA8A3A1BBD4F25A04526C0 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				484F073B2216D6FE00BC4329 /* Ionicons.ttf */,
 				13B07FAE1A68108700A75B9A /* bnblproto */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* bnblprotoTests */,
@@ -1169,6 +1172,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				484F073C2216D6FE00BC4329 /* Ionicons.ttf in Resources */,
 				0E577734DF4D41DC9D293667 /* AntDesign.ttf in Resources */,
 				DC3BFD47316C412AACDD3D2E /* Entypo.ttf in Resources */,
 				DA835C1445F544D1B7292DC1 /* EvilIcons.ttf in Resources */,

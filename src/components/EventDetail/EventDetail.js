@@ -1,5 +1,6 @@
 import React from 'react';
-import { Modal, View, ScrollView ,Image, Text, Button, StyleSheet } from 'react-native';
+import { Modal, View, ScrollView ,Image, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const eventDetail = (props) => {
   let modalContent = null;
@@ -24,7 +25,9 @@ const eventDetail = (props) => {
     <ScrollView style={styles.modalContainer}>
       {modalContent}
         <View style={styles.buttonContainer}>
-          <Button title="Delete" color="red" onPress={props.onItemDeleted} />
+          <TouchableOpacity>
+          <Icon size={30} name="ios-trash" color="red" onPress={props.onItemDeleted}/>
+          </TouchableOpacity>
           <Button title="Close" color="#9d4cff" onPress={props.onModalClosed} />
         </View>
     </ScrollView>
