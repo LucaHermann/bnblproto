@@ -17,7 +17,6 @@ const eventDetail = (props) => {
     );
   }
 
-
   return (
     <Modal 
       visible={props.selectedEvent !== null}
