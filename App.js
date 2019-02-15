@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { StyleSheet, View, ImageBackground, ScrollView} from 'react-native';
 import { connect } from "react-redux"
 
+import { addEvent, deleteEvent, selectEvent, unselectEvent } from './src/store/actions/index';
 import EventInput from './src/components/EventInput/EventInput';
 import EventList from './src/components/EventList/EventList';
 import EventDetail from './src/components/EventDetail/EventDetail';
-import { addEvent, deleteEvent, selectEvent, unselectEvent } from './src/store/actions/index';
 import BnblImg from './src/assets/bnblCorbo.jpg';
 
 class App extends Component {
-  eventAddedHandler = eventName => {
+  eventAddedHandler = (eventName) => {
     this.props.onAddEvent(eventName);
   };
 
@@ -17,7 +17,7 @@ class App extends Component {
     this.props.onDeleteEvent();
   };
 
-  eventSelectedHandler = key => {
+  eventSelectedHandler = (key) => {
     this.props.onSelectedEvent(key);
   };
 
@@ -64,14 +64,14 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     events: state.events.events,
     selectedEvent: state.events.selectedEvent
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onAddEvent: (name) => dispatch(addEvent(name)),
     onDeleteEvent: () => dispatch(deleteEvent()),

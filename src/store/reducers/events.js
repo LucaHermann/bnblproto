@@ -23,7 +23,7 @@ const eventsReducer = (state = initialState, action) => {
     case DELETE_EVENT:
       return {
         ...state,
-        events: state.events.filter(event =>{
+        events: state.events.filter(event => {
           return event.key !== state.selectedEvent.key;
         }),
         selectedEvent: null
