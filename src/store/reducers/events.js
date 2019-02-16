@@ -1,9 +1,8 @@
-import { ADD_EVENT, DELETE_EVENT, SELECT_EVENT, UNSELECT_EVENT } from '../actions/actionTypes';
+import { ADD_EVENT, DELETE_EVENT } from '../actions/actionTypes';
 import { selectEvent } from '../actions/events';
 
 const initialState = {
-  events: [],
-  selectedEvent: null
+  events: []
 }
 
 const eventsReducer = (state = initialState, action) => {
@@ -25,20 +24,7 @@ const eventsReducer = (state = initialState, action) => {
         ...state,
         events: state.events.filter(event => {
           return event.key !== state.selectedEvent.key;
-        }),
-        selectedEvent: null
-      };
-    case SELECT_EVENT:
-      return {
-        ...state,
-          selectedEvent: state.events.find(event => {
-            return event.key === action.eventKey;
-          })
-        };
-    case UNSELECT_EVENT:
-      return {
-        ...state,
-        selectedEvent: null
+        })
       };
     default:
       return state;
