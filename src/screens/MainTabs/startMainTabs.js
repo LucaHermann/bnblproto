@@ -1,10 +1,10 @@
 import { Navigation } from 'react-native-navigation';
-import { Icon } from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const startTabs = () => {
   Promise.all([
-    Icon.getImageSource("md-map", 30),
-    Icon.getImageSource("ios-share-alt", 30)
+    Icon.getImageSource("md-map", 30, "#000000"),
+    Icon.getImageSource("ios-share-alt", 30, "#000000")
   ]).then(sourcesIcons => {
     Navigation.startTabBasedApp({
       tabs: [
@@ -16,8 +16,8 @@ const startTabs = () => {
         },
         {
           screen: "benibla-events.ShareEventScreen",
-          label: "Share Event",
-          title: "Share Event",
+          label: "Share Event/Drop",
+          title: "Share Event/Drop",
           icon: sourcesIcons[1]
         }
       ]
