@@ -8,8 +8,9 @@ export const addEvent = (eventName) => {
   };
 };
 
-export const deleteEvent = () => {
+export const deleteEvent = (key) => {
   return {
-    type: DELETE_EVENT
+    type: DELETE_EVENT,
+    eventKey: key
   };
 };

@@ -25,10 +25,11 @@ Navigation.registerComponent(
   () => FindEventScreen, 
   store, 
   Provider);
-  Navigation.registerComponent(
-    "benibla-events.EventDetailScreen", 
-    () => EventDetailScreen);
-  
+Navigation.registerComponent(
+  "benibla-events.EventDetailScreen", 
+  () => EventDetailScreen,
+  store, 
+  Provider);  
 
 //Start a App
 Navigation.startSingleScreenApp({

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { 
   View, 
   ScrollView , 
@@ -8,27 +8,37 @@ import {
   StyleSheet, 
   TouchableOpacity
 } from 'react-native';
+import { connect } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/Ionicons';
+import { deleteEvent } from '../../store/actions/index';
 
-const eventDetail = (props) => {
-  return (
-  <ScrollView style={styles.container}>
-    <View>
-      <Image 
-        source={props.selectedEvent.eventImage} 
-        style={styles.eventImage} />
-      <Text style={styles.eventName}>{props.selectedEvent.eventName}</Text>
-      <Text style={styles.eventDesc}>{props.selectedEvent.eventDesc}</Text>
-    </View>
-    <View style={styles.trashContainer}>
-      <TouchableOpacity>
-        <Icon size={30} name="ios-trash" color="red" onPress={props.onItemDeleted}/>
-      </TouchableOpacity>
-    </View>
-  </ScrollView>
-  );
-};
+class EventDetail extends Component {
+  eventDeletedHandler = () => {
+    this.props.onDeleteEvent(this.props.selectedEvent.key);
+    this.props.navigator.pop();
+  }
+
+  render () {
+    return (
+      <ScrollView style={styles.container}>
+        <View>
+          <Image 
+            source={this.props.selectedEvent.eventImage} 
+            style={styles.eventImage} />
+          <Text style={styles.eventName}>{this.props.selectedEvent.eventName}</Text>
+          <Text style={styles.eventDesc}>{this.props.selectedEvent.eventDesc}</Text>
+        </View>
+        <View style={styles.trashContainer}>
+          <TouchableOpacity>
+            <Icon size={30} name="ios-trash" color="red" onPress={this.eventDeletedHandler} />
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    );
+  }
+}
+
 
 styles = StyleSheet.create({
   container: {
@@ -53,4 +63,10 @@ styles = StyleSheet.create({
   }
 });
 
-export default eventDetail
+const mapDispatchToProps = dispatch => {
+  return {
+    onDeleteEvent: (key) => dispatch(deleteEvent(key))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(EventDetail);

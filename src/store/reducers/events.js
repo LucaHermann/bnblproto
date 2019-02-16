@@ -23,7 +23,7 @@ const eventsReducer = (state = initialState, action) => {
       return {
         ...state,
         events: state.events.filter(event => {
-          return event.key !== state.selectedEvent.key;
+          return event.key !== action.eventKey;
         })
       };
     default:
