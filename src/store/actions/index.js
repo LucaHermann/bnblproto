@@ -1,1 +1,1 @@
-export { addEvent, deleteEvent, selectEvent, unselectEvent } from './events';
+export { addEvent, deleteEvent } from './events';

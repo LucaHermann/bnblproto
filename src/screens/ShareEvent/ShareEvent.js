@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 
+import EventInput from '../../components/EventInput/EventInput';
+import { addEvent } from '../../store/actions/index';
 class ShareEventScreen extends Component {
+  eventAddedHandler = eventName => {
+    this.props.onAddEvent(eventName);
+  }
+
   render () {
     return (
       <View>
-        <Text> On ShareEventScreen</Text>
+        <EventInput onEventAdded={this.eventAddedHandler}/>
       </View>
     );
   }
 }
 
-export default ShareEventScreen;
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddEvent: (eventName) => dispatch(addEvent(eventName))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ShareEventScreen);

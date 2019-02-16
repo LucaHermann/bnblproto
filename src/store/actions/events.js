@@ -1,4 +1,4 @@
-import { ADD_EVENT, DELETE_EVENT, SELECT_EVENT, UNSELECT_EVENT } from './actionTypes';
+import { ADD_EVENT, DELETE_EVENT } from './actionTypes';
 
 export const addEvent = (eventName) => {
   return {
@@ -11,18 +11,5 @@ export const addEvent = (eventName) => {
 export const deleteEvent = () => {
   return {
     type: DELETE_EVENT
-  };
-};
-
-export const selectEvent = (key) => {
-  return {
-    type: SELECT_EVENT,
-    eventKey: key
-  };
-};
-
-export const unselectEvent = () => {
-  return {
-    type: UNSELECT_EVENT
   };
 };

@@ -34,25 +34,24 @@ class EventInput extends Component {
   render () {
     return (
       <View style={styles.inputContainer}>
-        <Text style={styles.eventInputTitle}>Events/Drops</Text>
-          <TextInput 
-            onChangeText={this.eventNameChangedHandler}
-            value={this.state.eventName}
-            placeholder="Add Event/Drop Name"
-            style={styles.eventInput} />
-          <TextInput 
-            onChangeText={this.eventDescriptionChangedHandler}
-            value={this.state.eventDescription} 
-            placeholder="Add Event/Drop Descripton" 
-            style={styles.eventDescInput} 
-            editable={true}
-            maxLength={1200}
-            multiline={true}/>
-          <Button 
-            onPress={this.eventSubmitHandler}
-            title="Add"
-            color="#9d4cff"
-            style={styles.eventButton} />
+        <TextInput 
+          onChangeText={this.eventNameChangedHandler}
+          value={this.state.eventName}
+          placeholder="Add Event/Drop Name"
+          style={styles.eventInput} />
+        <TextInput 
+          onChangeText={this.eventDescriptionChangedHandler}
+          value={this.state.eventDescription} 
+          placeholder="Add Event/Drop Descripton" 
+          style={styles.eventDescInput} 
+          editable={true}
+          maxLength={1200}
+          multiline={true}/>
+        <Button 
+          onPress={this.eventSubmitHandler}
+          title="Add"
+          color="#9d4cff"
+          style={styles.eventButton} />
       </View>
     );
   }
@@ -81,12 +80,6 @@ const styles = StyleSheet.create({
   },
   eventButton: {
     width: "20%"
-  },
-  eventInputTitle: {
-    fontWeight: "bold",
-    textAlign: "center",
-    fontSize: 20,
-    marginBottom: 10
   }
 })
 
