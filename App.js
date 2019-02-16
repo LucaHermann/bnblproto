@@ -5,6 +5,7 @@ import AuthScreen from './src/screens/Auth/Auth';
 import ShareEventScreen from './src/screens/ShareEvent/ShareEvent';
 import FindEventScreen from './src/screens/FindEvent/FindEvent';
 import EventDetailScreen from './src/screens/EventDetail/EventDetail';
+import SideDrawerScreen from './src/screens/SideDrawer/SideDrawer';
 import configStore from './src/store/configStore';
 
 const store = configStore();
@@ -29,7 +30,12 @@ Navigation.registerComponent(
   "benibla-events.EventDetailScreen", 
   () => EventDetailScreen,
   store, 
-  Provider);  
+  Provider); 
+Navigation.registerComponent(
+  "benibla-events.SideDrawerScreen", 
+  () => SideDrawerScreen,
+  store, 
+  Provider); 
 
 //Start a App
 Navigation.startSingleScreenApp({

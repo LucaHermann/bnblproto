@@ -3,8 +3,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const startTabs = () => {
   Promise.all([
-    Icon.getImageSource("md-map", 30, "#000000"),
-    Icon.getImageSource("ios-share-alt", 30, "#000000")
+    Icon.getImageSource("md-map", 30),
+    Icon.getImageSource("ios-share-alt", 30),
+    Icon.getImageSource("ios-menu", 30)
   ]).then(sourcesIcons => {
     Navigation.startTabBasedApp({
       tabs: [
@@ -12,15 +13,38 @@ const startTabs = () => {
           screen: "benibla-events.FindEventScreen",
           label: "Find Event",
           title: "Find Event",
-          icon: sourcesIcons[0]
+          icon: sourcesIcons[0],
+          navigatorButtons: {
+            leftButtons: [
+              {
+                icon: sourcesIcons[2],
+                title: "Menu",
+                id: "sideDrawerToogle"
+              }
+            ]
+          }
         },
         {
           screen: "benibla-events.ShareEventScreen",
           label: "Share Event/Drop",
           title: "Share Event/Drop",
-          icon: sourcesIcons[1]
+          icon: sourcesIcons[1],
+          navigatorButtons: {
+            leftButtons: [
+              {
+                icon: sourcesIcons[2],
+                title: "Menu",
+                id: "sideDrawerToogle"
+              }
+            ]
+          }
         }
-      ]
+      ],
+      drawer : {
+        left: {
+          screen: "benibla-events.SideDrawerScreen"
+        }
+      }
     });
   })
 };
