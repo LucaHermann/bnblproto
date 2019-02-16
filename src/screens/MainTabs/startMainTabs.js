@@ -19,7 +19,7 @@ const startTabs = () => {
               {
                 icon: sourcesIcons[2],
                 title: "Menu",
-                id: "sideDrawerToogle"
+                id: "sideDrawerToggle"
               }
             ]
           }
@@ -34,7 +34,7 @@ const startTabs = () => {
               {
                 icon: sourcesIcons[2],
                 title: "Menu",
-                id: "sideDrawerToogle"
+                id: "sideDrawerToggle"
               }
             ]
           }

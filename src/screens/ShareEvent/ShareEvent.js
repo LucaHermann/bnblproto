@@ -13,8 +13,8 @@ class ShareEventScreen extends Component {
   onNavigatorEvent = event => {
     console.log(event);
     if (event.type === "NavBarButtonPress") {
-      if (event.id === "sideDrawerToogle") {
-        this.props.navigator.toogleDrawer({
+      if (event.id === "sideDrawerToggle") {
+        this.props.navigator.toggleDrawer({
           side: "left"
         })
       }
