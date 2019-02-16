@@ -15,12 +15,12 @@ const listEvent = (props) => (
 
 const styles = StyleSheet.create({
   eventItem: {
-    width: "95%",
+    width: "100%",
     padding: 7,
-    margin: 5,
+    marginTop: 5,
     backgroundColor: "#eee",
     flexDirection: "row",
-    alignItems: "flex-start"
+    alignItems: "center"
   },
   eventImg: {
     width: 30,

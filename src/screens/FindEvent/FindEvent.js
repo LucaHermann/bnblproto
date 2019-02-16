@@ -5,10 +5,25 @@ import { connect } from 'react-redux';
 import EventList from '../../components/EventList/EventList';
 
 class FindEventScreen extends Component {
+  eventSelectedHandler = key => {
+    const selecEvent = this.props.events.find(event => {
+      return event.key === key;
+    });
+    this.props.navigator.push({
+      screen: "benibla-events.EventDetailScreen",
+      title: selecEvent.eventName,
+      passProps: {
+        selectedEvent: selecEvent
+      }
+    });
+  }
+  
   render () {
     return (
       <View>
-        <EventList events={this.props.events}/>
+        <EventList 
+          events={this.props.events}
+          onEventSelected={this.eventSelectedHandler} />
       </View>
     );
   }
