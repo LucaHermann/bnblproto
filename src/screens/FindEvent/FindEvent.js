@@ -21,14 +21,14 @@ class FindEventScreen extends Component {
   }
   
   eventSelectedHandler = key => {
-    const selecEvent = this.props.events.find(event => {
+    const selectEvent = this.props.events.find(event => {
       return event.key === key;
     });
     this.props.navigator.push({
       screen: "benibla-events.EventDetailScreen",
-      title: selecEvent.eventName,
+      title: selectEvent.eventName,
       passProps: {
-        selectedEvent: selecEvent
+        selectedEvent: selectEvent
       }
     });
   }

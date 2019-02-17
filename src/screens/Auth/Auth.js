@@ -5,7 +5,7 @@ import startMainTabs from '../MainTabs/startMainTabs';
 import DefaultInput from '../../components/UI/DefaultInput/DefaultInput';
 import HeadingText from '../../components/UI/HeadingText/HeadingText';
 import MainText from '../../components/UI/MainText/MainText';
-import bnblBgd from '../../assets/bnblwhite.jpg';
+import bnblBgd from '../../assets/bnblWhite.jpg';
 
 class authScreen extends Component {
   loginHandler = () => {
