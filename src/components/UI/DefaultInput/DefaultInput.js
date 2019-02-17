@@ -1,0 +1,21 @@
+import React from 'react'
+import { TextInput, StyleSheet } from 'react-native';
+
+const defaultInput = props => (
+  <TextInput 
+    style={styles.input}
+    {...props}
+  />
+);
+
+const styles = StyleSheet.create({
+  input: {
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "#eee",
+    margin: 8,
+    padding: 5
+  }
+});
+
+export default defaultInput;
