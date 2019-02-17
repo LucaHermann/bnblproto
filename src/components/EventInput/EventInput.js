@@ -50,7 +50,7 @@ class EventInput extends Component {
         <Button 
           onPress={this.eventSubmitHandler}
           title="Add"
-          color="#9d4cff"
+          color= "#8B008B"
           style={styles.eventButton} />
       </View>
     );
