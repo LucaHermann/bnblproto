@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { View, Image, Button, Text, StyleSheet } from 'react-native';
+import { 
+  View, 
+  Image, 
+  Button, 
+  Text, 
+  StyleSheet 
+} from 'react-native';
 
 import imageEventHolder from '../../assets/bnblSquare.jpg';
 

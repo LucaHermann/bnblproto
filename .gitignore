@@ -6,6 +6,7 @@ npm-debug.*
 # OSX
 #
 .DS_Store
+ios/
 
 # Android/IntelliJ
 android/

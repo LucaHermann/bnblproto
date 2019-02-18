@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet ,View, Button, TextInput, Text } from 'react-native';
+import { 
+  StyleSheet, 
+  View, 
+  Button, 
+  TextInput, 
+  Text 
+} from 'react-native';
 
 import DefaultInput from '../UI/DefaultInput/DefaultInput';
 
@@ -13,7 +19,10 @@ const eventInput = (props) => {
       <DefaultInput 
         placeholder="Add Event/Drop Description" 
         val={props.eventDesc} 
-        onChangeText={props.onChangeDesc} />
+        onChangeText={props.onChangeDesc}
+        editable={true}
+        maxLength={1200}
+        multiline={true}/>
     </View>
   );
 }

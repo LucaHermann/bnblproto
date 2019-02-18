@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, ScrollView, StyleSheet, Image } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  Button, 
+  ScrollView, 
+  StyleSheet, 
+  Image 
+} from 'react-native';
 import { connect } from 'react-redux';
 
 import { addEvent } from '../../store/actions/index';
@@ -44,14 +52,9 @@ class ShareEventScreen extends Component {
 
   eventAddedHandler = () => {
     if (this.state.eventName.trim() === "") {
-      alert(JSON.stringify(this.state.eventName, this.state.eventDesc))
       return;
     }
-    const event = [this.state.eventName, this.state.eventDesc]
-    // event.push({
-    //   eventName: this.state.eventName,
-    //   eventDesc: this.state.eventDesc
-    // })
+    const event = [this.state.eventName, this.state.eventDesc];
     this.props.onAddEvent(event);
   }
 

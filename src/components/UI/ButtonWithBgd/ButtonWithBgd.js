@@ -1,5 +1,10 @@
 import React from 'react';
-import { TouchableHighlight, Text, View, StyleSheet } from 'react-native';
+import { 
+  TouchableHighlight, 
+  Text, 
+  View, 
+  StyleSheet 
+} from 'react-native';
 
 const buttonWithBgd = props => (
   <TouchableHighlight onPress={props.onPress}>
