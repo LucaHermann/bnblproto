@@ -47,12 +47,12 @@ class ShareEventScreen extends Component {
       alert(JSON.stringify(this.state.eventName, this.state.eventDesc))
       return;
     }
-    const event = []
-    event.push({
-      eventName: this.state.eventName,
-      eventDesc: this.state.eventDesc
-    })
-    this.props.addEvent(this.state.event);
+    const event = [this.state.eventName, this.state.eventDesc]
+    // event.push({
+    //   eventName: this.state.eventName,
+    //   eventDesc: this.state.eventDesc
+    // })
+    this.props.onAddEvent(event);
   }
 
   render () {

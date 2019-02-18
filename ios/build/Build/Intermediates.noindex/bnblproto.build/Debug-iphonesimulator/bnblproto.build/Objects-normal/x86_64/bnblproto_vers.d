@@ -1,2 +1,2 @@
 dependencies: \
-  /Users/luca/Code/Code_Taff/Benibla/bnblproto/ios/build/Build/Intermediates.noindex/bnblproto.build/Debug-iphonesimulator/bnblproto.build/DerivedSources/bnblproto_vers.c
+  /Users/luca/Code/Code_Taff/Benibla/new_bnbl/ios/build/Build/Intermediates.noindex/bnblproto.build/Debug-iphonesimulator/bnblproto.build/DerivedSources/bnblproto_vers.c

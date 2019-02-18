@@ -1,10 +1,10 @@
 import { ADD_EVENT, DELETE_EVENT } from './actionTypes';
 
-export const addEvent = (eventName) => {
+export const addEvent = (event) => {
   return {
     type: ADD_EVENT,
-    eventName: eventName[0].Name,
-    eventDesc: eventName[0].Desc
+    eventName: event[0],
+    eventDesc: event[1]
   };
 };
 
