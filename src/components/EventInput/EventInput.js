@@ -12,8 +12,8 @@ const eventInput = (props) => {
         onChangeName={props.eventNameChangedHandler} />
       <DefaultInput 
         placeholder="Add Event/Drop Description" 
-        val={props.eventDescription} 
-        onChangeDescription={props.eventDescriptionChangedHandler} />
+        val={props.eventDesc} 
+        onChangeDescription={props.eventDescChangedHandler} />
     </View>
   );
 }

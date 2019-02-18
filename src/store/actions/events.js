@@ -4,7 +4,7 @@ export const addEvent = (eventName) => {
   return {
     type: ADD_EVENT,
     eventName: eventName[0].Name,
-    eventDescritpion: eventName[0].Descritpion
+    eventDesc: eventName[0].Desc
   };
 };
 

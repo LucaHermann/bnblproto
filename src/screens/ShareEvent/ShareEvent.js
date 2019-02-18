@@ -12,7 +12,7 @@ import PickLocation from '../../components/PickLocation/PickLocation';
 class ShareEventScreen extends Component {
   state = {
     eventName: "",
-    eventDescription: ""
+    eventDesc: ""
   };
 
   constructor(props) {
@@ -36,21 +36,21 @@ class ShareEventScreen extends Component {
     })
   }
 
-  eventDescriptionChangedHandler = val => {
+  eventDescChangedHandler = val => {
     this.setState({
-      eventDescription: val
+      eventDesc: val
     })
   }
 
   eventAddedHandler = () => {
     if (this.state.eventName.trim() === "") {
-      alert("")
+      alert(JSON.stringify(this.state.eventName, this.state.eventDesc))
       return;
     }
     const event = []
     event.push({
       eventName: this.state.eventName,
-      eventDesc: this.state.eventDescription,
+      eventDesc: this.state.eventDesc
     })
     this.props.addEvent(this.state.event);
   }
@@ -64,8 +64,8 @@ class ShareEventScreen extends Component {
         <EventInput 
           eventName={this.state.eventName}
           onChangeName={this.eventNameChangedHandler}
-          eventDescription={this.state.eventDescription}
-          onChangeDescription={this.eventDescriptionChangedHandler}
+          eventDesc={this.state.eventDesc}
+          onChangeDesc={this.eventDescChangedHandler}
           />
         <View style={styles.button}>
           <Button 
