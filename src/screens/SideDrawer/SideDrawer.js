@@ -16,8 +16,8 @@ class SideDrawer extends Component {
         {width: Dimensions.get("window").width * 0.8} 
       ]}>
         <TouchableOpacity>
-          <View>
-            <Icon name="ios-log-out" size={30} color="black" />
+          <View style={styles.drawerItem}>
+            <Icon name="ios-log-out" size={30} color="black" style={styles.drawerItemIcon}/>
             <Text>Sign Out</Text>
           </View>
         </TouchableOpacity>
@@ -29,8 +29,17 @@ class SideDrawer extends Component {
 const styles= StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 22,
+    paddingTop: 50,
     backgroundColor: "white"
+  },
+  drawerItem: {
+    flexDirection: 'row',
+    alignItems: "center",
+    padding: 10,
+    backgroundColor: "#eee"
+  },
+  drawerItemIcon: {
+    marginRight: 10
   }
 });
 
