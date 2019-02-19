@@ -3,7 +3,8 @@ import {
   View, 
   Text, 
   TouchableOpacity, 
-  StyleSheet 
+  StyleSheet,
+  Animated
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -15,7 +16,9 @@ class FindEventScreen extends Component {
   }
 
   state = {
-    eventsLoaded: false
+    eventsLoaded: false,
+    removeAnim: new Animated.Value(1),
+    eventAnim: new Animated.Value(0)
   }
 
   constructor(props) {
@@ -46,25 +49,58 @@ class FindEventScreen extends Component {
     });
   }
 
-  eventsSearchHandler = () => {
-    this.setState({
-      eventsLoaded: true
-    })
+  eventsLoadedHandler = () => {
+    Animated.timing(this.state.eventAnim, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true
+    }).start();
   }
+
+  eventsSearchHandler = () => {
+    Animated.timing(this.state.removeAnim, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: true
+    }).start(() => {
+      this.setState({
+        eventsLoaded: true
+      });
+      this.eventsLoadedHandler();
+    });
+  };
 
   render () {
     let content = (
+    <Animated.View 
+      style={{
+        opacity: this.state.removeAnim,
+        transform: [
+          {
+            scale: this.state.removeAnim.interpolate({
+              inputRange: [0, 1],
+              outputRange: [12, 1]
+            })
+          }
+        ]
+      }}>
       <TouchableOpacity onPress={this.eventsSearchHandler}>
         <View style={styles.searchButton}>
           <Text style={styles.searchButtonText}>Find Event</Text>
         </View>
       </TouchableOpacity>
+    </Animated.View>
     );
     if (this.state.eventsLoaded) {
       content = (
-        <EventList 
-          events={this.props.events}
-          onEventSelected={this.eventSelectedHandler} />
+        <Animated.View 
+        style={{
+          opacity: this.state.eventAnim
+        }}>
+          <EventList 
+            events={this.props.events}
+            onEventSelected={this.eventSelectedHandler} />
+        </Animated.View>
       );
     }
     return (
