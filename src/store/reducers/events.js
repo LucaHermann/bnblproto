@@ -11,7 +11,7 @@ const eventsReducer = (state = initialState, action) => {
       return {
         ...state,
         events: state.events.concat({
-          key: Math.random(),
+          key: '' + Math.random(),
           eventName: action.eventName,
           eventDesc: action.eventDesc,
           eventImage: {
