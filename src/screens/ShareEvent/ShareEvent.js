@@ -60,6 +60,7 @@ class ShareEventScreen extends Component {
     }
     const event = [this.state.eventName, this.state.eventDesc];
     this.props.onAddEvent(event);
+    alert("Event/Drop added")
   }
 
   render () {
