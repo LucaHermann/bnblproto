@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderColor: "#eee",
-    margin: 8,
+    marginTop: 8,
+    marginBottom: 8,
     padding: 5
   }
 });

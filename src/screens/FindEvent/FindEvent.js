@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TouchableOpacity, 
+  StyleSheet 
+} from 'react-native';
 import { connect } from 'react-redux';
 
 import EventList from '../../components/EventList/EventList';
 
 class FindEventScreen extends Component {
+  static navigatorStyle = {
+    navBarButtonColor: "black"
+  }
+
+  state = {
+    eventsLoaded: false
+  }
+
   constructor(props) {
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
@@ -32,17 +45,54 @@ class FindEventScreen extends Component {
       }
     });
   }
-  
+
+  eventsSearchHandler = () => {
+    this.setState({
+      eventsLoaded: true
+    })
+  }
+
   render () {
-    return (
-      <View>
+    let content = (
+      <TouchableOpacity onPress={this.eventsSearchHandler}>
+        <View style={styles.searchButton}>
+          <Text style={styles.searchButtonText}>Find Event</Text>
+        </View>
+      </TouchableOpacity>
+    );
+    if (this.state.eventsLoaded) {
+      content = (
         <EventList 
           events={this.props.events}
           onEventSelected={this.eventSelectedHandler} />
+      );
+    }
+    return (
+      <View style={this.state.eventsLoaded ? null : styles.buttonContainer}>
+        {content}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  searchButton: {
+    borderColor: "black",
+    borderWidth: 3,
+    borderRadius: 50,
+    padding: 20
+  },
+  searchButtonText: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 25
+  }
+});
 
 const mapStateToProps = state => {
   return {

@@ -6,7 +6,8 @@ import {
   Text, 
   Button, 
   StyleSheet, 
-  TouchableOpacity
+  TouchableOpacity,
+  Dimensions
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -14,6 +15,24 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { deleteEvent } from '../../store/actions/index';
 
 class EventDetail extends Component {
+  state = {
+    viewMode : "portrait"
+  }
+  constructor(props){
+    super(props);
+    Dimensions.addEventListener("change", this.updateStyles)
+  }
+
+  componentWillUnmount() {
+    Dimensions.removeEventListener("change", this.updateStyles);
+  }
+
+  updateStyles = dims => {
+    this.setState({
+      viewMode: dims.window.height > 500 ? "portrait" : "landscape"
+    })
+  }
+
   eventDeletedHandler = () => {
     this.props.onDeleteEvent(this.props.selectedEvent.key);
     this.props.navigator.pop();
@@ -21,18 +40,28 @@ class EventDetail extends Component {
 
   render () {
     return (
-      <ScrollView style={styles.container}>
-        <View>
-          <Image 
-            source={this.props.selectedEvent.eventImage} 
-            style={styles.eventImage} />
-          <Text style={styles.eventName}>{this.props.selectedEvent.eventName}</Text>
-          <Text style={styles.eventDesc}>{this.props.selectedEvent.eventDesc}</Text>
-        </View>
-        <View style={styles.trashContainer}>
-          <TouchableOpacity>
-            <Icon size={30} name="ios-trash" color="red" onPress={this.eventDeletedHandler} />
-          </TouchableOpacity>
+      <ScrollView>
+        <View style={[
+          styles.container, 
+            this.state.viewMode === "portrait" 
+            ? styles.portraitContainer
+            : styles.landscapeContainer ]}>
+          <View style={styles.subContainer}>
+            <Image 
+              source={this.props.selectedEvent.eventImage} 
+              style={styles.eventImage} />
+          </View>
+          <View style={styles.subContainer}>
+            <View>
+              <Text style={styles.eventName}>{this.props.selectedEvent.eventName}</Text>
+              <Text style={styles.eventDesc}>{this.props.selectedEvent.eventDesc}</Text>
+            </View>
+            <View style={styles.trashContainer}>
+              <TouchableOpacity>
+                <Icon size={30} name="ios-trash" color="red" onPress={this.eventDeletedHandler} />
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
       </ScrollView>
     );
@@ -42,7 +71,14 @@ class EventDetail extends Component {
 
 styles = StyleSheet.create({
   container: {
-    marginTop: 25
+    marginTop: 25,
+    flex: 1
+  },
+  portraitContainer: {
+    flexDirection: 'column'
+  },
+  landscapeContainer: {
+    flexDirection: 'row'
   },
   trashContainer: {
     flexDirection: "row",
@@ -60,6 +96,9 @@ styles = StyleSheet.create({
   },
   eventDesc: {
     textAlign: "center"
+  },
+  subContainer: {
+    flex: 1
   }
 });
 

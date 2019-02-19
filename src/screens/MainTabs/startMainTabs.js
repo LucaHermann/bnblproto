@@ -40,6 +40,9 @@ const startTabs = () => {
           }
         }
       ],
+      tabsStyle: {
+        tabBarSelectedButtonColor: "black"
+      },
       drawer : {
         left: {
           screen: "benibla-events.SideDrawerScreen"

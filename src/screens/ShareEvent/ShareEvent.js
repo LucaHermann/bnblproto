@@ -18,6 +18,10 @@ import PickImage from '../../components/PickImage/PickImage';
 import PickLocation from '../../components/PickLocation/PickLocation';
 
 class ShareEventScreen extends Component {
+  static navigatorStyle = {
+    navBarButtonColor: "black"
+  }
+
   state = {
     eventName: "",
     eventDesc: ""
