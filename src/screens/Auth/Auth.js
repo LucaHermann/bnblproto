@@ -29,13 +29,13 @@ class authScreen extends Component {
         <MainText>
           <HeadingText>Please Log In</HeadingText>
         </MainText>
-        <Button title="Switch to login" color={"#8B008B"}/>
+        <Button title="Switch to login" />
         <View style={styles.inputContainer}>
           <DefaultInput placeholder="Your E-mail Adress" style={styles.input}/>
           <DefaultInput placeholder="Your Password" style={styles.input}/>
           <DefaultInput placeholder="Confirm Password" style={styles.input}/>
         </View>
-      <Button title="Submit" onPress={this.loginHandler} color={"#8B008B"}/>
+      <Button title="Submit" onPress={this.loginHandler} />
       </View>
     </ImageBackground>
     );

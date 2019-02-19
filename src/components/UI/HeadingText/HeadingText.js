@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   textHeading: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#8B008B"
+    color: "#007AFF"
   }
 });
 

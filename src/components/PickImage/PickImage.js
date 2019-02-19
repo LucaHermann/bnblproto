@@ -6,7 +6,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import imageEventHolder from '../../assets/bnblSquare.jpg';
+import imageEventHolder from '../../assets/bnblWhite.jpg';
 
 class PickImage extends Component {
   render () {
@@ -16,7 +16,7 @@ class PickImage extends Component {
         <Image source={imageEventHolder} style={styles.imagePreview} />
       </View>
       <View style={styles.button}>
-        <Button title="Pick image" onPress={() => alert('picked')} />
+        <Button title="Pick image" onPress={() => alert('image Added')} />
       </View>
       </View>
     );
