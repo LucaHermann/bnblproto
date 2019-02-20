@@ -138,7 +138,7 @@ class AuthScreen extends Component {
     if (Dimensions.get('window').height > 500) {
       headingText = (
         <MainText>
-          <HeadingText>Please Log In/SignUp</HeadingText>
+          <HeadingText>Please LogIn or SignUp</HeadingText>
         </MainText>
       );
     }
