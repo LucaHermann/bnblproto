@@ -1,2 +1,2 @@
 # bnblproto
-protype of future app for benibla
+protype of future app for benibla.
