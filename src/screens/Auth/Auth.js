@@ -6,7 +6,10 @@ import {
   TextInput, 
   StyleSheet, 
   ImageBackground,
-  Dimensions
+  Dimensions,
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback
 } from 'react-native';
 import { connect } from 'react-redux'
 
@@ -161,9 +164,10 @@ class AuthScreen extends Component {
     <ImageBackground 
       source={bnblBgd} 
       style={styles.backgroundImage}>
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
         {headingText}
         <Button title={"Switch Login/SignUp"} onPress={this.switchAuthModeHandler}></Button>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inputContainer}>
           <DefaultInput 
             placeholder="Your E-mail Adress" 
@@ -172,6 +176,9 @@ class AuthScreen extends Component {
             onChangeText={(val) => this.updateInputState('email', val)}
             valid={this.state.controls.email.valid}
             touched={this.state.controls.email.touched}
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyboardType="email-address"
           />
           <View style={
             this.state.viewMode === "portrait"  ||  this.state.authMode === "login"
@@ -193,11 +200,12 @@ class AuthScreen extends Component {
             </View>
           {confirmPasswordControl}
         </View>
-      </View>
+        </View>
+      </TouchableWithoutFeedback>
       <Button 
         title="Submit" 
         onPress={this.loginHandler} />
-      </View>
+      </KeyboardAvoidingView>
     </ImageBackground>
     );
   }
