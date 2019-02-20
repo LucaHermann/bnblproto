@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { 
   View, 
   Text, 
-  Button, 
+  Button,
   TextInput, 
   StyleSheet, 
   ImageBackground,
   Dimensions
 } from 'react-native';
+import { connect } from 'react-redux'
 
 import startMainTabs from '../MainTabs/startMainTabs';
 import DefaultInput from '../../components/UI/DefaultInput/DefaultInput';
@@ -15,9 +16,11 @@ import HeadingText from '../../components/UI/HeadingText/HeadingText';
 import MainText from '../../components/UI/MainText/MainText';
 import bnblBgd from '../../assets/bnblWhite.jpg';
 import validate from '../../utility/validation';
+import { tryAuth } from '../../store/actions/index';
 
-class authScreen extends Component {
+class AuthScreen extends Component {
   state = {
+    authMode: "login",
     viewMode:  Dimensions.get('window').height > 500 ? "portrait" : "landscape",
     controls: {
       email: {
@@ -25,21 +28,24 @@ class authScreen extends Component {
         valid: false,
         validationRules: {
           isEmail: true
-        }
+        },
+        touched: false
       },
       password: {
         value: "",
         valid: false,
         validationRules: {
           minLength: 6
-        }
+        },
+        touched: false
       },
       confirmPassword: {
         value: "",
         valid: false,
         validationRules: {
           equalTo: "password"
-        }
+        },
+        touched: false
       }
     }
   }
@@ -53,6 +59,14 @@ class authScreen extends Component {
     Dimensions.removeEventListener("change", this.updateStyles)
   }
 
+  switchAuthModeHandler = () => {
+    this.setState(prevState => {
+      return {
+        authMode: prevState.authMode === "login" ? "signup" : "login"
+      };
+    });
+  };
+
   updateStyles = dims => {
     this.setState({
       viewMode: dims.window.height > 500 ? "portrait" : "landscape"
@@ -60,6 +74,11 @@ class authScreen extends Component {
   }
 
   loginHandler = () => {
+    const authData = {
+      email: this.state.controls.email.value,
+      password: this.state.controls.password.value
+    };
+    this.props.onLogin(authData)
     startMainTabs();
   }
 
@@ -101,7 +120,8 @@ class authScreen extends Component {
               value,
               prevState.controls[key].validationRules,
               connectedValue
-            )
+            ),
+            touched: true
           }
         }
       };
@@ -110,35 +130,55 @@ class authScreen extends Component {
 
   render () {
     let headingText = null;
+    let confirmPasswordControl = null;
 
     if (Dimensions.get('window').height > 500) {
       headingText = (
         <MainText>
-          <HeadingText>Please Log In</HeadingText>
+          <HeadingText>Please Log In/SignUp</HeadingText>
         </MainText>
-      )
+      );
     }
-
+    if (this.state.authMode === "signup") {
+      confirmPasswordControl = (
+        <View style={
+          this.state.viewMode === "portrait" 
+            ? styles.portraitPasswordWrapper 
+            : styles.landscapePasswordWrapper}>
+          <DefaultInput 
+            placeholder="Confirm Password" 
+            style={styles.input} 
+            value={this.state.controls.confirmPassword.value}
+            onChangeText={(val) => this.updateInputState('confirmPassword', val)}
+            valid={this.state.controls.confirmPassword.valid}
+            secureTextEntry={true}
+            touched={this.state.controls.confirmPassword.touched}
+          />
+        </View>
+      );
+    }
     return (
     <ImageBackground 
       source={bnblBgd} 
       style={styles.backgroundImage}>
       <View style={styles.container}>
         {headingText}
-        <Button title="Switch to login" />
+        <Button title={"Switch Login/SignUp"} onPress={this.switchAuthModeHandler}></Button>
         <View style={styles.inputContainer}>
           <DefaultInput 
             placeholder="Your E-mail Adress" 
             style={styles.input} 
             value={this.state.controls.email.value}
             onChangeText={(val) => this.updateInputState('email', val)}
+            valid={this.state.controls.email.valid}
+            touched={this.state.controls.email.touched}
           />
           <View style={
-            this.state.viewMode === "portrait" 
+            this.state.viewMode === "portrait"  ||  this.state.authMode === "login"
               ? styles.portraitPasswordContainer 
               : styles.landscapePasswordContainer}>
             <View style={
-              this.state.viewMode === "portrait" 
+              this.state.viewMode === "portrait" ||  this.state.authMode === "login"
                 ? styles.portraitPasswordWrapper : 
                 styles.landscapePasswordWrapper}>
               <DefaultInput 
@@ -146,21 +186,14 @@ class authScreen extends Component {
                 style={styles.input} 
                 value={this.state.controls.password.value}
                 onChangeText={(val) => this.updateInputState('password', val)}
+                valid={this.state.controls.password.valid}
+                secureTextEntry={true}
+                touched={this.state.controls.password.touched}
               />
             </View>
-            <View style={
-              this.state.viewMode === "portrait" 
-                ? styles.portraitPasswordWrapper 
-                : styles.landscapePasswordWrapper}>
-              <DefaultInput 
-                placeholder="Confirm Password" 
-                style={styles.input} 
-                value={this.state.controls.confirmPassword.value}
-                onChangeText={(val) => this.updateInputState('confirmPassword', val)}
-              />
-            </View>
-          </View>
+          {confirmPasswordControl}
         </View>
+      </View>
       <Button 
         title="Submit" 
         onPress={this.loginHandler} />
@@ -207,4 +240,10 @@ const styles = StyleSheet.create({
   }
 });
 
-export default authScreen;
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogin: (authData) => dispatch(tryAuth(authData))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AuthScreen);
