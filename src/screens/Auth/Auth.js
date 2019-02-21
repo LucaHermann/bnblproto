@@ -169,7 +169,7 @@ class AuthScreen extends Component {
         <Button title={"Switch Login/SignUp"} onPress={this.switchAuthModeHandler}></Button>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inputContainer}>
-          <DefaultInput 
+          <DefaultInput
             placeholder="Your E-mail Adress" 
             style={styles.input} 
             value={this.state.controls.email.value}
@@ -188,7 +188,7 @@ class AuthScreen extends Component {
               this.state.viewMode === "portrait" ||  this.state.authMode === "login"
                 ? styles.portraitPasswordWrapper : 
                 styles.landscapePasswordWrapper}>
-              <DefaultInput 
+              <DefaultInput
                 placeholder="Your Password" 
                 style={styles.input} 
                 value={this.state.controls.password.value}
