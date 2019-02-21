@@ -11,8 +11,8 @@ const startTabs = () => {
       tabs: [
         {
           screen: "benibla-events.FindEventScreen",
-          label: "Find Event",
-          title: "Find Event",
+          label: "Find Event/Drop",
+          title: "Find Event/Drop",
           icon: sourcesIcons[0],
           navigatorButtons: {
             leftButtons: [
