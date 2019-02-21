@@ -95,6 +95,9 @@ class ShareEventScreen extends Component {
     if (this.state.controls.eventName.value.trim() !== "") {
       return;
     }
+    if (this.state.controls.eventDescription.value.trim() !== "") {
+      return;
+    }
     const event = [this.state.controls.eventName.value, this.state.controls.eventDescription.value];
     this.props.onAddEvent(event);
     alert("Event/Drop added")
@@ -116,7 +119,7 @@ class ShareEventScreen extends Component {
           <Button 
             title="Share event/drop" 
             onPress={this.eventAddedHandler}
-            disabled={!this.state.controls.eventName.valid}
+            disabled={!this.state.controls.eventName.valid && !this.state.controls.eventDescription.valid}
             />
         </View>
       </View>
