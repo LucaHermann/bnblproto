@@ -54,7 +54,7 @@ class EventDetail extends Component {
           <View style={styles.subContainer}>
             <View>
               <Text style={styles.eventName}>{this.props.selectedEvent.eventName}</Text>
-              <Text style={styles.eventDesc}>{this.props.selectedEvent.eventDesc}</Text>
+              <Text style={styles.eventDesc}>{this.props.selectedEvent.eventDescription}</Text>
             </View>
             <View style={styles.trashContainer}>
               <TouchableOpacity>

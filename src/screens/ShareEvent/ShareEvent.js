@@ -54,10 +54,10 @@ class ShareEventScreen extends Component {
       if (event.id === "sideDrawerToggle") {
         this.props.navigator.toggleDrawer({
           side: "left"
-        })
+        });
       }
     }
-  }
+  };
 
   eventNameChangedHandler = val => {
     this.setState(prevState => {
@@ -93,14 +93,10 @@ class ShareEventScreen extends Component {
 
   eventAddedHandler = () => {
     if (this.state.controls.eventName.value.trim() !== "") {
-      return;
+      const event = [this.state.controls.eventName.value, this.state.controls.eventDescription.value];
+      this.props.onAddEvent(event);
+      alert("Event/Drop added")
     }
-    if (this.state.controls.eventDescription.value.trim() !== "") {
-      return;
-    }
-    const event = [this.state.controls.eventName.value, this.state.controls.eventDescription.value];
-    this.props.onAddEvent(event);
-    alert("Event/Drop added")
   }
 
   render () {

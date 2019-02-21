@@ -1,5 +1,4 @@
 import { ADD_EVENT, DELETE_EVENT } from '../actions/actionTypes';
-import { selectEvent } from '../actions/events';
 
 const initialState = {
   events: []
