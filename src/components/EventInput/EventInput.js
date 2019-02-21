@@ -9,23 +9,26 @@ import {
 
 import DefaultInput from '../UI/DefaultInput/DefaultInput';
 
-const eventInput = (props) => {
-  return (
+const eventInput = props => (
     <View style={styles.container}>
       <DefaultInput 
         placeholder="Add Event/Drop Name" 
-        val={props.eventName} 
-        onChangeText={props.onChangeName} />
+        value={props.eventDataName.value} 
+        valid={props.eventDataName.valid} 
+        touched={props.eventDataName.touched}
+        onChangeText={props.onChangeName}/>
       <DefaultInput 
         placeholder="Add Event/Drop Description" 
-        val={props.eventDesc} 
-        onChangeText={props.onChangeDesc}
+        value={props.eventDataDescription.value} 
+        valid={props.eventDataDescription.valid}
+        touched={props.eventDataDescription.touched}
+        onChangeText={props.onChangeDescription}
         editable={true}
         maxLength={1200}
         multiline={true}/>
     </View>
-  );
-}
+);
+
 
 const styles = StyleSheet.create({
   container: {
