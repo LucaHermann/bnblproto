@@ -4,7 +4,7 @@ export const addEvent = (event) => {
   return {
     type: ADD_EVENT,
     eventName: event[0],
-    eventDesc: event[1]
+    eventDescription: event[1]
   };
 };
 

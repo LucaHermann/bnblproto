@@ -13,7 +13,7 @@ const eventsReducer = (state = initialState, action) => {
         events: state.events.concat({
           key: '' + Math.random(),
           eventName: action.eventName,
-          eventDesc: action.eventDesc,
+          eventDescription: action.eventDescription,
           eventImage: {
             uri: "https://yt3.ggpht.com/a-/ACSszfH3aFJWQIkARyD7el6nla1dR8lj7n8A7CIYTQ=s900-mo-c-c0xffffffff-rj-k-no"
           }

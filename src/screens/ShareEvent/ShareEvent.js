@@ -16,6 +16,7 @@ import HeadingText from '../../components/UI/HeadingText/HeadingText';
 import EventInput from '../../components/EventInput/EventInput';
 import PickImage from '../../components/PickImage/PickImage';
 import PickLocation from '../../components/PickLocation/PickLocation';
+import validate from '../../utility/validation';
 
 class ShareEventScreen extends Component {
   static navigatorStyle = {
@@ -23,8 +24,24 @@ class ShareEventScreen extends Component {
   }
 
   state = {
-    eventName: "",
-    eventDesc: ""
+    controls: {
+      eventName: {
+        value: "",
+        valid: false,
+        touched: false,
+        validationRules: {
+          notEmpty: true
+        }
+      },
+      eventDescription: {
+        value: "",
+        valid: false,
+        touched: false,
+        validationRules: {
+          notEmpty: true
+        }
+      }
+    }
   };
 
   constructor(props) {
@@ -43,22 +60,42 @@ class ShareEventScreen extends Component {
   }
 
   eventNameChangedHandler = val => {
-    this.setState({
-      eventName: val
-    })
-  }
+    this.setState(prevState => {
+      return {
+        controls: {
+          ...prevState.controls,
+          eventName: {
+            ...prevState.controls.eventName,
+            value: val,
+            valid: validate(val, prevState.controls.eventName.validationRules),
+            touched: true
+          }
+        }
+      };
+    });
+  };
 
-  eventDescChangedHandler = val => {
-    this.setState({
-      eventDesc: val
-    })
-  }
+  eventDescriptionChangedHandler = val => {
+    this.setState(prevState => {
+      return {
+        controls: {
+          ...prevState.controls,
+          eventDescription: {
+            ...prevState.controls.eventDescription,
+            value: val,
+            valid: validate(val,  prevState.controls.eventDescription.validationRules),
+            touched: true
+          }
+        }
+      };
+    });
+  };
 
   eventAddedHandler = () => {
-    if (this.state.eventName.trim() === "") {
+    if (this.state.controls.eventName.value.trim() !== "") {
       return;
     }
-    const event = [this.state.eventName, this.state.eventDesc];
+    const event = [this.state.controls.eventName.value, this.state.controls.eventDescription.value];
     this.props.onAddEvent(event);
     alert("Event/Drop added")
   }
@@ -70,15 +107,16 @@ class ShareEventScreen extends Component {
         <PickImage />
         <PickLocation />
         <EventInput 
-          eventName={this.state.eventName}
+          eventDataName={this.state.controls.eventName}
           onChangeName={this.eventNameChangedHandler}
-          eventDesc={this.state.eventDesc}
-          onChangeDesc={this.eventDescChangedHandler}
+          eventDataDescription={this.state.controls.eventDescription}
+          onChangeDescription={this.eventDescriptionChangedHandler}
           />
         <View style={styles.button}>
           <Button 
             title="Share event/drop" 
             onPress={this.eventAddedHandler}
+            disabled={!this.state.controls.eventName.valid}
             />
         </View>
       </View>
