@@ -4,18 +4,59 @@ import {
   Image, 
   Button, 
   Text, 
-  StyleSheet 
+  StyleSheet,
+  Dimensions
 } from 'react-native';
-
-import imageEventHolder from '../../assets/bnblSquare.jpg';
+import MapView from 'react-native-maps';
 
 class PickLocation extends Component {
+  state = {
+    focusedLocation: {
+      latitude: 48.886851,
+      longitude: 2.347010,
+      latitudeDelta: 0.0122,
+      longitudeDelta: 
+        Dimensions.get("window").width / 
+        Dimensions.get("window").height * 
+        0.0122
+    },
+    locationChosen: false
+  }
+
+  pickLocationHandler = event => {
+    const coords = event.nativeEvent.coordinate;
+    this.map.animateToRegion({
+      ...this.state.focusedLocation,
+      latitude: coords.latitude,
+      longitude: coords.longitude
+    });
+    this.setState(prevState => {
+      return {
+        focusedLocation: {
+          ...prevState.focusedLocation,
+          latitude: coords.latitude,
+          longitude: coords.longitude
+        },
+        locationChosen: true
+      };
+    });
+  }
+
   render () {
+    let marker = null;
+
+    if (this.state.locationChosen){
+      marker= <MapView.Marker coordinate={this.state.focusedLocation} />
+    }
     return (
       <View style={styles.container}>
-        <View style={styles.placeholder}>
-          <Text>Maps</Text>
-        </View>
+        <MapView 
+        initialRegion={this.state.focusedLocation}
+        style={styles.map}
+        onPress={this.pickLocationHandler}
+        ref={ref => this.map = ref}>
+        {marker}
+        </MapView>
         <View style={styles.button}>
           <Button title="Locate event/drop"  onPress={() => alert('location added')} />
         </View>
@@ -29,12 +70,9 @@ const styles= StyleSheet.create({
     width: "100%",
     alignItems: "center"
   },
-  placeholder: {
-    borderWidth: 1,
-    borderColor: "black",
-    backgroundColor: "#eee",
-    width: "80%",
-    height: 150
+  map: {
+    width:"100%",
+    height: 250
   },
   button: {
     margin: 7
