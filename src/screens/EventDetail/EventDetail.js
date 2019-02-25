@@ -10,9 +10,12 @@ import {
   Dimensions
 } from 'react-native';
 import { connect } from 'react-redux';
+import MapView from 'react-native-maps';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import { deleteEvent } from '../../store/actions/index';
+
+
 
 class EventDetail extends Component {
   state = {
@@ -50,6 +53,20 @@ class EventDetail extends Component {
             <Image 
               source={this.props.selectedEvent.eventImage} 
               style={styles.eventImage} />
+          </View>
+          <View style={styles.subContainer}>
+            <MapView 
+              initialRegion={{
+                ...this.props.selectedEvent.eventLocation,
+                latitudeDelta: 0.0122,
+                longitudeDelta: 
+                Dimensions.get("window").width / 
+                Dimensions.get("window").height * 
+                0.0122
+              }}
+              style={styles.map}>
+              <MapView.Marker coordinate={this.props.selectedEvent.eventLocation} />
+            </MapView>
           </View>
           <View style={styles.subContainer}>
             <View>
@@ -99,6 +116,9 @@ styles = StyleSheet.create({
   },
   subContainer: {
     flex: 1
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject
   }
 });
 

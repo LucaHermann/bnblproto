@@ -40,6 +40,10 @@ class ShareEventScreen extends Component {
         validationRules: {
           notEmpty: true
         }
+      },
+      location: {
+        value: null,
+        valid: false
       }
     }
   };
@@ -92,11 +96,23 @@ class ShareEventScreen extends Component {
   };
 
   eventAddedHandler = () => {
-    if (this.state.controls.eventName.value.trim() !== "") {
-      const event = [this.state.controls.eventName.value, this.state.controls.eventDescription.value];
+      const event = [this.state.controls.eventName.value, this.state.controls.eventDescription.value, this.state.controls.location.value];
       this.props.onAddEvent(event);
       alert("Event/Drop added")
-    }
+  }
+
+  locationPickHandler = location => {
+    this.setState(prevState => {
+      return {
+        controls: {
+          ...prevState.controls,
+          location: {
+            value: location,
+            valid: true
+          }
+        }
+      }
+    });
   }
 
   render () {
@@ -104,7 +120,8 @@ class ShareEventScreen extends Component {
     <ScrollView>
       <View style={styles.container}>
         <PickImage />
-        <PickLocation />
+        <PickLocation 
+          onLocationPick={this.locationPickHandler}/>
         <EventInput 
           eventDataName={this.state.controls.eventName}
           onChangeName={this.eventNameChangedHandler}
