@@ -15,7 +15,8 @@ const eventsReducer = (state = initialState, action) => {
           eventDescription: action.eventDescription,
           eventImage: {
             uri: "https://yt3.ggpht.com/a-/ACSszfH3aFJWQIkARyD7el6nla1dR8lj7n8A7CIYTQ=s900-mo-c-c0xffffffff-rj-k-no"
-          }
+          },
+          eventLocation: action.eventLocation
         })
       };
     case DELETE_EVENT:
