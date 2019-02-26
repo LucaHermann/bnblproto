@@ -85,7 +85,6 @@ class EventDetail extends Component {
   }
 }
 
-
 styles = StyleSheet.create({
   container: {
     marginTop: 25,
@@ -109,16 +108,19 @@ styles = StyleSheet.create({
   eventName: {
     fontWeight: "bold",
     textAlign: "center",
-    fontSize: 28
+    fontSize: 28,
+    marginTop: 195
   },
   eventDesc: {
     textAlign: "center"
   },
   subContainer: {
-    flex: 1
+    flex: 1,
   },
   map: {
-    ...StyleSheet.absoluteFillObject
+    ...StyleSheet.absoluteFillObject,
+    height: 180,
+    marginTop: 15
   }
 });
 
