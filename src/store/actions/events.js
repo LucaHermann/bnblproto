@@ -6,22 +6,29 @@ export const addEvent = (event) => {
     const eventData = {
       eventName: event[0],
       eventDescription: event[1],
-      eventLocation: event[2],
-    }
-    fetch("https://beniblaproto.firebaseio.com/events.json", {
+      eventLocation: event[2]
+    };
+    fetch("https://us-central1-beniblaproto.cloudfunctions.net/storeImage", {
       method: "POST",
-      body: JSON.stringify(eventData)
+      body: JSON.stringify({
+        image: event[3].base64
+      })
     })
     .catch(err => console.log(err))
     .then(res => res.json())
     .then(parsedRes => {
-      console.log(parsedRes);
+      console.log(parsedRes)
     });
+    // fetch("https://beniblaproto.firebaseio.com/events.json", {
+    //   method: "POST",
+    //   body: JSON.stringify(eventData)
+    // })
+    // .catch(err => console.log(err))
+    // .then(res => res.json())
+    // .then(parsedRes => {
+    //   console.log(parsedRes);
+    // });
   };
-  // {
-  //   type: ADD_EVENT,
-  //   eventImage: event[3]
-  // };
 };
 
 export const deleteEvent = (key) => {

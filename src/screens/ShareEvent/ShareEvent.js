@@ -116,7 +116,7 @@ class ShareEventScreen extends Component {
           ...prevState.controls,
           image: {
             value: image,
-            valid: true
+            valid: true,
           }
         }
       };
