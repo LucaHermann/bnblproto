@@ -13,10 +13,10 @@ const eventsReducer = (state = initialState, action) => {
           key: '' + Math.random(),
           eventName: action.eventName,
           eventDescription: action.eventDescription,
-          eventImage: {
-            uri: "https://yt3.ggpht.com/a-/ACSszfH3aFJWQIkARyD7el6nla1dR8lj7n8A7CIYTQ=s900-mo-c-c0xffffffff-rj-k-no"
-          },
-          eventLocation: action.eventLocation
+          eventLocation: action.eventLocation,
+          eventImage: { 
+            uri: action.eventImage.uri,
+            base64: action.eventImage.data }
         })
       };
     case DELETE_EVENT:

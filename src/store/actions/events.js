@@ -5,7 +5,8 @@ export const addEvent = (event) => {
     type: ADD_EVENT,
     eventName: event[0],
     eventDescription: event[1],
-    eventLocation: event[2]
+    eventLocation: event[2],
+    eventImage: event[3]
   };
 };
 

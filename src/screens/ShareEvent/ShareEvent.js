@@ -44,6 +44,10 @@ class ShareEventScreen extends Component {
       location: {
         value: null,
         valid: false
+      },
+      image: {
+        value: null,
+        valid: false
       }
     }
   };
@@ -96,9 +100,27 @@ class ShareEventScreen extends Component {
   };
 
   eventAddedHandler = () => {
-      const event = [this.state.controls.eventName.value, this.state.controls.eventDescription.value, this.state.controls.location.value];
+      const event = [
+        this.state.controls.eventName.value, 
+        this.state.controls.eventDescription.value, 
+        this.state.controls.location.value,
+        this.state.controls.image.value];
       this.props.onAddEvent(event);
       alert("Event/Drop added")
+  }
+
+  imagePickedHandler = image => {
+    this.setState(prevState => {
+      return {
+        controls: {
+          ...prevState.controls,
+          image: {
+            value: image,
+            valid: true
+          }
+        }
+      };
+    });
   }
 
   locationPickHandler = location => {
@@ -119,7 +141,8 @@ class ShareEventScreen extends Component {
     return (
     <ScrollView>
       <View style={styles.container}>
-        <PickImage />
+        <PickImage 
+          onImagePicked={this.imagePickedHandler}/>
         <PickLocation 
           onLocationPick={this.locationPickHandler}/>
         <EventInput 
