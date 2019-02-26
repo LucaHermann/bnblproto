@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSMicrophoneUsageDescriptio</key>
-	<string>micro use</string>
+	<string>use micro</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>fetch photo</string>
 	<key>NSCameraUsageDescription</key>
