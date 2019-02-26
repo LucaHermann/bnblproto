@@ -2,32 +2,33 @@ import { ADD_EVENT, DELETE_EVENT } from './actionTypes';
 import { connect } from 'react-redux';
 
 export const addEvent = (event) => {
+console.log(event[3].base64)
   return dipatch => {
+  fetch("https://us-central1-beniblaproto.cloudfunctions.net/storeImage", {
+    method: "POST",
+    body: JSON.stringify({
+      image: event[3].base64
+    })
+  })
+  .catch(err => console.log(err))
+  .then(res => res.json())
+  .then(parsedRes => {
     const eventData = {
       eventName: event[0],
       eventDescription: event[1],
-      eventLocation: event[2]
+      eventLocation: event[2],
+      image: parsedRes.imageUrl
     };
-    fetch("https://us-central1-beniblaproto.cloudfunctions.net/storeImage", {
+    return fetch("https://beniblaproto.firebaseio.com/events.json", {
       method: "POST",
-      body: JSON.stringify({
-        image: event[3].base64
-      })
+      body: JSON.stringify(eventData)
     })
-    .catch(err => console.log(err))
-    .then(res => res.json())
-    .then(parsedRes => {
-      console.log(parsedRes)
-    });
-    // fetch("https://beniblaproto.firebaseio.com/events.json", {
-    //   method: "POST",
-    //   body: JSON.stringify(eventData)
-    // })
-    // .catch(err => console.log(err))
-    // .then(res => res.json())
-    // .then(parsedRes => {
-    //   console.log(parsedRes);
-    // });
+  })
+  .catch(err => console.log(err))
+  .then(res => res.json())
+  .then(parsedRes => {
+    console.log(parsedRes);
+  });
   };
 };
 
