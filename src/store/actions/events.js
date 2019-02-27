@@ -2,8 +2,7 @@ import { ADD_EVENT, DELETE_EVENT } from './actionTypes';
 import { connect } from 'react-redux';
 
 export const addEvent = (event) => {
-console.log(event[3].base64)
-  return dipatch => {
+  return dispatch => {
   fetch("https://us-central1-beniblaproto.cloudfunctions.net/storeImage", {
     method: "POST",
     body: JSON.stringify({
