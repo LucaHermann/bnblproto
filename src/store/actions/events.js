@@ -1,15 +1,19 @@
 import { ADD_EVENT, DELETE_EVENT } from './actionTypes';
-import { connect } from 'react-redux';
+import { uiStartLoading, uiStopLoading } from './index';
 
 export const addEvent = (event) => {
   return dispatch => {
+    dispatch(uiStartLoading());
   fetch("https://us-central1-beniblaproto.cloudfunctions.net/storeImage", {
     method: "POST",
     body: JSON.stringify({
       image: event[3].base64
     })
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    console.log(err);
+    dispatch(uiStopLoading());
+  })
   .then(res => res.json())
   .then(parsedRes => {
     const eventData = {
@@ -23,10 +27,14 @@ export const addEvent = (event) => {
       body: JSON.stringify(eventData)
     })
   })
-  .catch(err => console.log(err))
+  .catch(err => {
+    console.log(err);
+    dispatch(uiStopLoading());
+  })
   .then(res => res.json())
   .then(parsedRes => {
     console.log(parsedRes);
+    dispatch(uiStopLoading());
   });
   };
 };

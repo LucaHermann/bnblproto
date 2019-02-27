@@ -6,7 +6,8 @@ import {
   Button, 
   ScrollView, 
   StyleSheet, 
-  Image 
+  Image,
+  ActivityIndicator
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -138,6 +139,17 @@ class ShareEventScreen extends Component {
   }
 
   render () {
+    let submitButton = (
+      <Button 
+        title="Share event/drop" 
+        onPress={this.eventAddedHandler}
+        disabled={!this.state.controls.eventName.valid && !this.state.controls.eventDescription.valid} />
+    );
+
+    if (this.props.isLoading) {
+      submitButton = <ActivityIndicator />
+    }
+
     return (
     <ScrollView>
       <View style={styles.container}>
@@ -152,11 +164,7 @@ class ShareEventScreen extends Component {
           onChangeDescription={this.eventDescriptionChangedHandler}
           />
         <View style={styles.button}>
-          <Button 
-            title="Share event/drop" 
-            onPress={this.eventAddedHandler}
-            disabled={!this.state.controls.eventName.valid && !this.state.controls.eventDescription.valid}
-            />
+          {submitButton}
         </View>
       </View>
     </ScrollView>
@@ -182,8 +190,17 @@ const styles = StyleSheet.create({
   imagePreview: {
     width: "100%",
     height: "100%"
+  },
+  loadingButton: {
+    color: "#007AFF"
   }
 });
+
+const mapStateToProps = state => {
+  return {
+    isLoading: state.ui.isLoading
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -191,4 +208,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(ShareEventScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ShareEventScreen);
