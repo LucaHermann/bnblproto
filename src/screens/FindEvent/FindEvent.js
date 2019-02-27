@@ -91,7 +91,7 @@ class FindEventScreen extends Component {
       }}>
       <TouchableOpacity onPress={this.eventsSearchHandler}>
         <View style={styles.searchButton}>
-          <Text style={styles.searchButtonText}>Find Event</Text>
+          <Text style={styles.searchButtonText}>Find Events</Text>
         </View>
       </TouchableOpacity>
     </Animated.View>
