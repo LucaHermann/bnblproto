@@ -1,4 +1,4 @@
-import { DELETE_EVENT, SET_EVENTS } from '../actions/actionTypes';
+import { REMOVE_EVENT, SET_EVENTS } from '../actions/actionTypes';
 
 const initialState = {
   events: []
@@ -11,11 +11,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         events: action.events
       };
-    case DELETE_EVENT:
+    case REMOVE_EVENT:
       return {
         ...state,
         events: state.events.filter(event => {
-          return event.key !== action.eventKey;
+          return event.key !== action.key;
         })
       };
     default:
