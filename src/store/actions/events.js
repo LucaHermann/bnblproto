@@ -27,13 +27,13 @@ export const addEvent = (event) => {
       body: JSON.stringify(eventData)
     })
   })
-  .catch(err => {
-    console.log(err);
-    dispatch(uiStopLoading());
-  })
   .then(res => res.json())
   .then(parsedRes => {
     console.log(parsedRes);
+    dispatch(uiStopLoading());
+  })
+  .catch(err => {
+    console.log(err);
     dispatch(uiStopLoading());
   });
   };
@@ -42,10 +42,6 @@ export const addEvent = (event) => {
 export const getEvents = () => {
   return dispatch => {
     fetch("https://beniblaproto.firebaseio.com/events.json")
-    .catch(err => {
-      alert("error");
-      console.log(err);
-    })
     .then(res => res.json())
     .then(parsedRes => {
       const events = [];
@@ -59,6 +55,10 @@ export const getEvents = () => {
         });
       }
       dispatch(setEvents(events))
+    })
+    .catch(err => {
+      alert("error");
+      console.log(err);
     });
   };
 };
@@ -76,13 +76,13 @@ export const deleteEvent = (key) => {
     return fetch("https://beniblaproto.firebaseio.com/events/" + key + ".json", {
       method: "DELETE"
     })
-    .catch(err => {
-      alert("error");
-      console.log(err);
-    })
     .then(res => res.json())
     .then(parsedRes => {
       console.log("[action/event.js]", "Done!")
+    })
+    .catch(err => {
+      alert("error");
+      console.log(err);
     });
   };
 };
