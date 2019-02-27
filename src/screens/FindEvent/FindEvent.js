@@ -9,6 +9,7 @@ import {
 import { connect } from 'react-redux';
 
 import EventList from '../../components/EventList/EventList';
+import { getEvents } from '../../store/actions/index';
 
 class FindEventScreen extends Component {
   static navigatorStyle = {
@@ -24,6 +25,10 @@ class FindEventScreen extends Component {
   constructor(props) {
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
+  }
+
+  componentDidMount() {
+    this.props.onLoadEvents();
   }
 
   onNavigatorEvent = event => {
@@ -133,7 +138,13 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => {
   return {
     events: state.events.events
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps)(FindEventScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoadEvents: () => dispatch(getEvents())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FindEventScreen);

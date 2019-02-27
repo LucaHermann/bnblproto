@@ -1,4 +1,4 @@
-import { ADD_EVENT, DELETE_EVENT } from './actionTypes';
+import { SET_EVENTS } from './actionTypes';
 import { uiStartLoading, uiStopLoading } from './index';
 
 export const addEvent = (event) => {
@@ -38,6 +38,37 @@ export const addEvent = (event) => {
   });
   };
 };
+
+export const getEvents = () => {
+  return dispatch => {
+    fetch("https://beniblaproto.firebaseio.com/events.json")
+    .catch(err => {
+      alert("error");
+      console.log(err);
+    })
+    .then(res => res.json())
+    .then(parsedRes => {
+      const events = [];
+      for (let key in parsedRes) {
+        events.push({
+          ...parsedRes[key],
+          image: {
+            uri: parsedRes[key].image
+          },
+          key: key
+        });
+      }
+      dispatch(setEvents(events))
+    });
+  };
+};
+
+export const setEvents = events => {
+  return {
+    type: SET_EVENTS,
+    events: events
+  }
+}
 
 export const deleteEvent = (key) => {
   return {

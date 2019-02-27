@@ -51,7 +51,7 @@ class EventDetail extends Component {
             : styles.landscapeContainer ]}>
           <View style={styles.subContainer}>
             <Image 
-              source={this.props.selectedEvent.eventImage} 
+              source={this.props.selectedEvent.image} 
               style={styles.eventImage} />
           </View>
           <View style={styles.subContainer}>
