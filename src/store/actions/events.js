@@ -3,17 +3,22 @@ import { uiStartLoading, uiStopLoading, authGetToken } from './index';
 
 export const addEvent = (event) => {
   return dispatch => {
+      let authToken;
     dispatch(uiStartLoading());
     dispatch(authGetToken())
     .catch(() => {
       alert("No valid Token found!")
     })
     .then(token => {
+      authToken = token;
       return fetch("https://us-central1-beniblaproto.cloudfunctions.net/storeImage", {
         method: "POST",
         body: JSON.stringify({
           image: event[3].base64
-        })
+        }),
+        headers: {
+          "Authorization": "Bearer " + authToken
+        }
       })
     })
   .catch(err => {
@@ -28,7 +33,7 @@ export const addEvent = (event) => {
       eventLocation: event[2],
       image: parsedRes.imageUrl
     };
-    return fetch("https://beniblaproto.firebaseio.com/events.json", {
+    return fetch("https://beniblaproto.firebaseio.com/events.json?auth=" + authToken, {
       method: "POST",
       body: JSON.stringify(eventData)
     })
