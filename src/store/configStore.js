@@ -1,9 +1,9 @@
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
-import eventsReducer from './reducers/events';
-import uiReducer from './reducers/ui';
-import authReducer from './reducers/auth';
+import eventsReducer from "./reducers/events";
+import uiReducer from "./reducers/ui";
+import authReducer from "./reducers/auth";
 
 const rootReducer = combineReducers({
   events: eventsReducer,

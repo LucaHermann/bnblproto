@@ -1,41 +1,46 @@
-import { Navigation } from 'react-native-navigation';
-import { Provider } from 'react-redux';
+import { Navigation } from "react-native-navigation";
+import { Provider } from "react-redux";
 
-import AuthScreen from './src/screens/Auth/Auth';
-import ShareEventScreen from './src/screens/ShareEvent/ShareEvent';
-import FindEventScreen from './src/screens/FindEvent/FindEvent';
-import EventDetailScreen from './src/screens/EventDetail/EventDetail';
-import SideDrawerScreen from './src/screens/SideDrawer/SideDrawer';
-import configStore from './src/store/configStore';
+import AuthScreen from "./src/screens/Auth/Auth";
+import ShareEventScreen from "./src/screens/ShareEvent/ShareEvent";
+import FindEventScreen from "./src/screens/FindEvent/FindEvent";
+import EventDetailScreen from "./src/screens/EventDetail/EventDetail";
+import SideDrawerScreen from "./src/screens/SideDrawer/SideDrawer";
+import configStore from "./src/store/configStore";
 
 const store = configStore();
 
 //Register Screens
 Navigation.registerComponent(
-  "benibla-events.AuthScreen", 
-  () => AuthScreen, 
-  store, 
-  Provider);
+  "benibla-events.AuthScreen",
+  () => AuthScreen,
+  store,
+  Provider
+);
 Navigation.registerComponent(
-  "benibla-events.ShareEventScreen", 
-  () => ShareEventScreen, 
-  store, 
-  Provider);
+  "benibla-events.ShareEventScreen",
+  () => ShareEventScreen,
+  store,
+  Provider
+);
 Navigation.registerComponent(
-  "benibla-events.FindEventScreen", 
-  () => FindEventScreen, 
-  store, 
-  Provider);
+  "benibla-events.FindEventScreen",
+  () => FindEventScreen,
+  store,
+  Provider
+);
 Navigation.registerComponent(
-  "benibla-events.EventDetailScreen", 
+  "benibla-events.EventDetailScreen",
   () => EventDetailScreen,
-  store, 
-  Provider); 
+  store,
+  Provider
+);
 Navigation.registerComponent(
-  "benibla-events.SideDrawerScreen", 
+  "benibla-events.SideDrawerScreen",
   () => SideDrawerScreen,
-  store, 
-  Provider); 
+  store,
+  Provider
+);
 
 //Start a App
 Navigation.startSingleScreenApp({

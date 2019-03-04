@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import { 
-  View, 
-  Text, 
-  TouchableOpacity, 
+import React, { Component } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
   StyleSheet,
   Animated
-} from 'react-native';
-import { connect } from 'react-redux';
+} from "react-native";
+import { connect } from "react-redux";
 
-import EventList from '../../components/EventList/EventList';
-import { getEvents } from '../../store/actions/index';
+import EventList from "../../components/EventList/EventList";
+import { getEvents } from "../../store/actions/index";
 
 class FindEventScreen extends Component {
   static navigatorStyle = {
     navBarButtonColor: "black"
-  }
+  };
 
   state = {
     eventsLoaded: false,
     removeAnim: new Animated.Value(1),
     eventAnim: new Animated.Value(0)
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -36,11 +36,11 @@ class FindEventScreen extends Component {
       if (event.id === "sideDrawerToggle") {
         this.props.navigator.toggleDrawer({
           side: "left"
-        })
+        });
       }
     }
-  }
-  
+  };
+
   eventSelectedHandler = key => {
     const selectEvent = this.props.events.find(event => {
       return event.key === key;
@@ -52,7 +52,7 @@ class FindEventScreen extends Component {
         selectedEvent: selectEvent
       }
     });
-  }
+  };
 
   eventsLoadedHandler = () => {
     Animated.timing(this.state.eventAnim, {
@@ -60,7 +60,7 @@ class FindEventScreen extends Component {
       duration: 500,
       useNativeDriver: true
     }).start();
-  }
+  };
 
   eventsSearchHandler = () => {
     Animated.timing(this.state.removeAnim, {
@@ -75,36 +75,39 @@ class FindEventScreen extends Component {
     });
   };
 
-  render () {
+  render() {
     let content = (
-    <Animated.View 
-      style={{
-        opacity: this.state.removeAnim,
-        transform: [
-          {
-            scale: this.state.removeAnim.interpolate({
-              inputRange: [0, 1],
-              outputRange: [12, 1]
-            })
-          }
-        ]
-      }}>
-      <TouchableOpacity onPress={this.eventsSearchHandler}>
-        <View style={styles.searchButton}>
-          <Text style={styles.searchButtonText}>Find Events</Text>
-        </View>
-      </TouchableOpacity>
-    </Animated.View>
+      <Animated.View
+        style={{
+          opacity: this.state.removeAnim,
+          transform: [
+            {
+              scale: this.state.removeAnim.interpolate({
+                inputRange: [0, 1],
+                outputRange: [12, 1]
+              })
+            }
+          ]
+        }}
+      >
+        <TouchableOpacity onPress={this.eventsSearchHandler}>
+          <View style={styles.searchButton}>
+            <Text style={styles.searchButtonText}>Find Events</Text>
+          </View>
+        </TouchableOpacity>
+      </Animated.View>
     );
     if (this.state.eventsLoaded) {
       content = (
-        <Animated.View 
-        style={{
-          opacity: this.state.eventAnim
-        }}>
-          <EventList 
+        <Animated.View
+          style={{
+            opacity: this.state.eventAnim
+          }}
+        >
+          <EventList
             events={this.props.events}
-            onEventSelected={this.eventSelectedHandler} />
+            onEventSelected={this.eventSelectedHandler}
+          />
         </Animated.View>
       );
     }
@@ -147,4 +150,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FindEventScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FindEventScreen);

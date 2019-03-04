@@ -1,29 +1,27 @@
-import React, {Component} from 'react';
-import { 
-  View, 
-  ScrollView , 
-  Image, 
-  Text, 
-  Button, 
-  StyleSheet, 
+import React, { Component } from "react";
+import {
+  View,
+  ScrollView,
+  Image,
+  Text,
+  Button,
+  StyleSheet,
   TouchableOpacity,
   Dimensions
-} from 'react-native';
-import { connect } from 'react-redux';
-import MapView from 'react-native-maps';
+} from "react-native";
+import { connect } from "react-redux";
+import MapView from "react-native-maps";
 
-import Icon from 'react-native-vector-icons/Ionicons';
-import { deleteEvent } from '../../store/actions/index';
-
-
+import Icon from "react-native-vector-icons/Ionicons";
+import { deleteEvent } from "../../store/actions/index";
 
 class EventDetail extends Component {
   state = {
-    viewMode : "portrait"
-  }
-  constructor(props){
+    viewMode: "portrait"
+  };
+  constructor(props) {
     super(props);
-    Dimensions.addEventListener("change", this.updateStyles)
+    Dimensions.addEventListener("change", this.updateStyles);
   }
 
   componentWillUnmount() {
@@ -33,49 +31,65 @@ class EventDetail extends Component {
   updateStyles = dims => {
     this.setState({
       viewMode: dims.window.height > 500 ? "portrait" : "landscape"
-    })
-  }
+    });
+  };
 
   eventDeletedHandler = () => {
     this.props.onDeleteEvent(this.props.selectedEvent.key);
     this.props.navigator.pop();
-  }
+  };
 
-  render () {
+  render() {
     return (
       <ScrollView>
-        <View style={[
-          styles.container, 
-            this.state.viewMode === "portrait" 
-            ? styles.portraitContainer
-            : styles.landscapeContainer ]}>
+        <View
+          style={[
+            styles.container,
+            this.state.viewMode === "portrait"
+              ? styles.portraitContainer
+              : styles.landscapeContainer
+          ]}
+        >
           <View style={styles.subContainer}>
-            <Image 
-              source={this.props.selectedEvent.image} 
-              style={styles.eventImage} />
+            <Image
+              source={this.props.selectedEvent.image}
+              style={styles.eventImage}
+            />
           </View>
           <View style={styles.subContainer}>
-            <MapView 
+            <MapView
               initialRegion={{
                 ...this.props.selectedEvent.eventLocation,
                 latitudeDelta: 0.0122,
-                longitudeDelta: 
-                Dimensions.get("window").width / 
-                Dimensions.get("window").height * 
-                0.0122
+                longitudeDelta:
+                  (Dimensions.get("window").width /
+                    Dimensions.get("window").height) *
+                  0.0122
               }}
-              style={styles.map}>
-              <MapView.Marker coordinate={this.props.selectedEvent.eventLocation} />
+              style={styles.map}
+            >
+              <MapView.Marker
+                coordinate={this.props.selectedEvent.eventLocation}
+              />
             </MapView>
           </View>
           <View style={styles.subContainer}>
             <View>
-              <Text style={styles.eventName}>{this.props.selectedEvent.eventName}</Text>
-              <Text style={styles.eventDesc}>{this.props.selectedEvent.eventDescription}</Text>
+              <Text style={styles.eventName}>
+                {this.props.selectedEvent.eventName}
+              </Text>
+              <Text style={styles.eventDesc}>
+                {this.props.selectedEvent.eventDescription}
+              </Text>
             </View>
             <View style={styles.trashContainer}>
               <TouchableOpacity>
-                <Icon size={30} name="ios-trash" color="red" onPress={this.eventDeletedHandler} />
+                <Icon
+                  size={30}
+                  name="ios-trash"
+                  color="red"
+                  onPress={this.eventDeletedHandler}
+                />
               </TouchableOpacity>
             </View>
           </View>
@@ -91,10 +105,10 @@ styles = StyleSheet.create({
     flex: 1
   },
   portraitContainer: {
-    flexDirection: 'column'
+    flexDirection: "column"
   },
   landscapeContainer: {
-    flexDirection: 'row'
+    flexDirection: "row"
   },
   trashContainer: {
     flexDirection: "row",
@@ -115,7 +129,7 @@ styles = StyleSheet.create({
     textAlign: "center"
   },
   subContainer: {
-    flex: 1,
+    flex: 1
   },
   map: {
     ...StyleSheet.absoluteFillObject,
@@ -126,8 +140,11 @@ styles = StyleSheet.create({
 
 const mapDispatchToProps = dispatch => {
   return {
-    onDeleteEvent: (key) => dispatch(deleteEvent(key))
+    onDeleteEvent: key => dispatch(deleteEvent(key))
   };
 };
 
-export default connect(null, mapDispatchToProps)(EventDetail);
+export default connect(
+  null,
+  mapDispatchToProps
+)(EventDetail);

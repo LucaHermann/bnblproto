@@ -1,19 +1,14 @@
-import React from 'react'
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TouchableOpacity, 
-  Image 
-} from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
-const listEvent = (props) => (
+const listEvent = props => (
   <TouchableOpacity onPress={props.onEventPressed}>
     <View style={styles.eventItem}>
-      <Image 
+      <Image
         source={props.eventImg}
         style={styles.eventImg}
-        resizeMode="cover" />
+        resizeMode="cover"
+      />
       <Text style={styles.textFont}>{props.eventName}</Text>
     </View>
   </TouchableOpacity>

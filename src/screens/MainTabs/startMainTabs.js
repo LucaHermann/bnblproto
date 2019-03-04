@@ -1,5 +1,5 @@
-import { Navigation } from 'react-native-navigation';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Navigation } from "react-native-navigation";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const startTabs = () => {
   Promise.all([
@@ -43,13 +43,13 @@ const startTabs = () => {
       tabsStyle: {
         tabBarSelectedButtonColor: "black"
       },
-      drawer : {
+      drawer: {
         left: {
           screen: "benibla-events.SideDrawerScreen"
         }
       }
     });
-  })
+  });
 };
 
 export default startTabs;

@@ -1,14 +1,9 @@
-import React from 'react';
-import { 
-  TouchableHighlight, 
-  Text, 
-  View, 
-  StyleSheet 
-} from 'react-native';
+import React from "react";
+import { TouchableHighlight, Text, View, StyleSheet } from "react-native";
 
 const buttonWithBgd = props => (
   <TouchableHighlight onPress={props.onPress}>
-    <View style={[styles.button, {backgroundColor: props.color}]}>
+    <View style={[styles.button, { backgroundColor: props.color }]}>
       <Text>{props.children}</Text>
     </View>
   </TouchableHighlight>

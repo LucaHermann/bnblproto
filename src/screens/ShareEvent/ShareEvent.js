@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  Button, 
-  ScrollView, 
-  StyleSheet, 
+import React, { Component } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  ScrollView,
+  StyleSheet,
   Image,
   ActivityIndicator
-} from 'react-native';
-import { connect } from 'react-redux';
+} from "react-native";
+import { connect } from "react-redux";
 
-import { addEvent } from '../../store/actions/index';
-import MainText from '../../components/UI/MainText/MainText';
-import HeadingText from '../../components/UI/HeadingText/HeadingText';
-import EventInput from '../../components/EventInput/EventInput';
-import PickImage from '../../components/PickImage/PickImage';
-import PickLocation from '../../components/PickLocation/PickLocation';
-import validate from '../../utility/validation';
+import { addEvent } from "../../store/actions/index";
+import MainText from "../../components/UI/MainText/MainText";
+import HeadingText from "../../components/UI/HeadingText/HeadingText";
+import EventInput from "../../components/EventInput/EventInput";
+import PickImage from "../../components/PickImage/PickImage";
+import PickLocation from "../../components/PickLocation/PickLocation";
+import validate from "../../utility/validation";
 
 class ShareEventScreen extends Component {
   static navigatorStyle = {
     navBarButtonColor: "black"
-  }
+  };
 
   state = {
     controls: {
@@ -92,7 +92,10 @@ class ShareEventScreen extends Component {
           eventDescription: {
             ...prevState.controls.eventDescription,
             value: val,
-            valid: validate(val,  prevState.controls.eventDescription.validationRules),
+            valid: validate(
+              val,
+              prevState.controls.eventDescription.validationRules
+            ),
             touched: true
           }
         }
@@ -101,14 +104,15 @@ class ShareEventScreen extends Component {
   };
 
   eventAddedHandler = () => {
-      const event = [
-        this.state.controls.eventName.value, 
-        this.state.controls.eventDescription.value, 
-        this.state.controls.location.value,
-        this.state.controls.image.value];
-      this.props.onAddEvent(event);
-      alert("Event/Drop added")
-  }
+    const event = [
+      this.state.controls.eventName.value,
+      this.state.controls.eventDescription.value,
+      this.state.controls.location.value,
+      this.state.controls.image.value
+    ];
+    this.props.onAddEvent(event);
+    alert("Event/Drop added");
+  };
 
   imagePickedHandler = image => {
     this.setState(prevState => {
@@ -117,12 +121,12 @@ class ShareEventScreen extends Component {
           ...prevState.controls,
           image: {
             value: image,
-            valid: true,
+            valid: true
           }
         }
       };
     });
-  }
+  };
 
   locationPickHandler = location => {
     this.setState(prevState => {
@@ -134,40 +138,40 @@ class ShareEventScreen extends Component {
             valid: true
           }
         }
-      }
+      };
     });
-  }
+  };
 
-  render () {
+  render() {
     let submitButton = (
-      <Button 
-        title="Share event/drop" 
+      <Button
+        title="Share event/drop"
         onPress={this.eventAddedHandler}
-        disabled={!this.state.controls.eventName.valid && !this.state.controls.eventDescription.valid} />
+        disabled={
+          !this.state.controls.eventName.valid &&
+          !this.state.controls.eventDescription.valid
+        }
+      />
     );
 
     if (this.props.isLoading) {
-      submitButton = <ActivityIndicator />
+      submitButton = <ActivityIndicator />;
     }
 
     return (
-    <ScrollView>
-      <View style={styles.container}>
-        <PickImage 
-          onImagePicked={this.imagePickedHandler}/>
-        <PickLocation 
-          onLocationPick={this.locationPickHandler}/>
-        <EventInput 
-          eventDataName={this.state.controls.eventName}
-          onChangeName={this.eventNameChangedHandler}
-          eventDataDescription={this.state.controls.eventDescription}
-          onChangeDescription={this.eventDescriptionChangedHandler}
+      <ScrollView>
+        <View style={styles.container}>
+          <PickImage onImagePicked={this.imagePickedHandler} />
+          <PickLocation onLocationPick={this.locationPickHandler} />
+          <EventInput
+            eventDataName={this.state.controls.eventName}
+            onChangeName={this.eventNameChangedHandler}
+            eventDataDescription={this.state.controls.eventDescription}
+            onChangeDescription={this.eventDescriptionChangedHandler}
           />
-        <View style={styles.button}>
-          {submitButton}
+          <View style={styles.button}>{submitButton}</View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
     );
   }
 }
@@ -204,8 +208,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddEvent: (eventName) => dispatch(addEvent(eventName))
+    onAddEvent: eventName => dispatch(addEvent(eventName))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShareEventScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShareEventScreen);

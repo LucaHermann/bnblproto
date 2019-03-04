@@ -1,19 +1,21 @@
-import React from 'react';
-import { StyleSheet, FlatList } from 'react-native';
+import React from "react";
+import { StyleSheet, FlatList } from "react-native";
 
-import ListItem from './../ListItem/ListItem';
+import ListItem from "./../ListItem/ListItem";
 
-const eventList = (props) => {
+const eventList = props => {
   return (
-    <FlatList 
+    <FlatList
       style={styles.eventListContainer}
-      data={props.events} 
-      renderItem={(info) => (
+      data={props.events}
+      renderItem={info => (
         <ListItem
           eventName={info.item.eventName}
           eventImg={info.item.image}
-          onEventPressed={() => props.onEventSelected(info.item.key)} />
-      )} />
+          onEventPressed={() => props.onEventSelected(info.item.key)}
+        />
+      )}
+    />
   );
 };
 

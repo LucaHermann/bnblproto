@@ -1,8 +1,8 @@
-import { REMOVE_EVENT, SET_EVENTS } from '../actions/actionTypes';
+import { REMOVE_EVENT, SET_EVENTS } from "../actions/actionTypes";
 
 const initialState = {
   events: []
-}
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
