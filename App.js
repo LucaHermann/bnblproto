@@ -43,9 +43,10 @@ Navigation.registerComponent(
 );
 
 //Start a App
-Navigation.startSingleScreenApp({
-  screen: {
-    screen: "benibla-events.AuthScreen",
-    title: "Login"
-  }
-});
+export default () =>
+  Navigation.startSingleScreenApp({
+    screen: {
+      screen: "benibla-events.AuthScreen",
+      title: "Login"
+    }
+  });
