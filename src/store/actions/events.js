@@ -1,15 +1,21 @@
 import { SET_EVENTS, REMOVE_EVENT } from './actionTypes';
-import { uiStartLoading, uiStopLoading } from './index';
+import { uiStartLoading, uiStopLoading, authGetToken } from './index';
 
 export const addEvent = (event) => {
   return dispatch => {
     dispatch(uiStartLoading());
-  fetch("https://us-central1-beniblaproto.cloudfunctions.net/storeImage", {
-    method: "POST",
-    body: JSON.stringify({
-      image: event[3].base64
+    dispatch(authGetToken())
+    .catch(() => {
+      alert("No valid Token found!")
     })
-  })
+    .then(token => {
+      return fetch("https://us-central1-beniblaproto.cloudfunctions.net/storeImage", {
+        method: "POST",
+        body: JSON.stringify({
+          image: event[3].base64
+        })
+      })
+    })
   .catch(err => {
     console.log(err);
     dispatch(uiStopLoading());
@@ -41,18 +47,24 @@ export const addEvent = (event) => {
 
 export const getEvents = () => {
   return dispatch => {
-    fetch("https://beniblaproto.firebaseio.com/events.json")
-    .then(res => res.json())
-    .then(parsedRes => {
-      const events = [];
-      for (let key in parsedRes) {
-        events.push({
-          ...parsedRes[key],
-          image: {
-            uri: parsedRes[key].image
-          },
-          key: key
-        });
+    dispatch(authGetToken())
+      .then(token => {
+        return fetch("https://beniblaproto.firebaseio.com/events.json?auth=" + token)
+      })
+      .catch(() => {
+        alert("No valid Token found!")
+      })
+      .then(res => res.json())
+      .then(parsedRes => {
+        const events = [];
+        for (let key in parsedRes) {
+          events.push({
+            ...parsedRes[key],
+            image: {
+              uri: parsedRes[key].image
+            },
+            key: key
+          });
       }
       dispatch(setEvents(events))
     })
@@ -72,11 +84,16 @@ export const setEvents = events => {
 
 export const deleteEvent = (key) => {
   return dispatch => {
-    dispatch(removeEvent(key));
-    return fetch("https://beniblaproto.firebaseio.com/events/" + key + ".json", {
-      method: "DELETE"
+    dispatch(authGetToken())
+    .catch(() => {
+      alert("No valid Token found!")
     })
-    .then(res => res.json())
+    .then(token => {
+      dispatch(removeEvent(key));
+      return fetch("https://beniblaproto.firebaseio.com/events/" + key + ".json?auth=" + token, {
+        method: "DELETE"
+      })
+    }).then(res => res.json())
     .then(parsedRes => {
       console.log("[action/event.js]", "Done!")
     })

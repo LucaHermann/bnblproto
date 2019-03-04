@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 
 import eventsReducer from './reducers/events';
 import uiReducer from './reducers/ui';
+import authReducer from './reducers/auth';
 
 const rootReducer = combineReducers({
   events: eventsReducer,
-  ui: uiReducer
+  ui: uiReducer,
+  auth: authReducer
 });
 
 let composeEnhancers = compose;
