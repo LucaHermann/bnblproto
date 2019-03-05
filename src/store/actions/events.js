@@ -52,7 +52,8 @@ export const addEvent = event => {
           eventName: event[0],
           eventDescription: event[1],
           eventLocation: event[2],
-          image: parsedRes.imageUrl
+          image: parsedRes.imageUrl,
+          imagePath: parsedRes.imagePath
         };
         return fetch(
           "https://beniblaproto.firebaseio.com/events.json?auth=" + authToken,
