@@ -1,5 +1,16 @@
-import { SET_EVENTS, REMOVE_EVENT } from "./actionTypes";
+import {
+  SET_EVENTS,
+  REMOVE_EVENT,
+  EVENT_ADDED,
+  START_ADD_EVENT
+} from "./actionTypes";
 import { uiStartLoading, uiStopLoading, authGetToken } from "./index";
+
+export const startAddEvent = () => {
+  return {
+    type: START_ADD_EVENT
+  };
+};
 
 export const addEvent = event => {
   return dispatch => {
@@ -26,9 +37,16 @@ export const addEvent = event => {
       })
       .catch(err => {
         console.log(err);
+        alert("Something went wrong, try again");
         dispatch(uiStopLoading());
       })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error();
+        }
+      })
       .then(parsedRes => {
         const eventData = {
           eventName: event[0],
@@ -44,15 +62,28 @@ export const addEvent = event => {
           }
         );
       })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error();
+        }
+      })
       .then(parsedRes => {
         console.log(parsedRes);
         dispatch(uiStopLoading());
+        dispatch(eventAdded());
       })
       .catch(err => {
         console.log(err);
         dispatch(uiStopLoading());
       });
+  };
+};
+
+export const eventAdded = () => {
+  return {
+    type: EVENT_ADDED
   };
 };
 
@@ -67,7 +98,13 @@ export const getEvents = () => {
       .catch(() => {
         alert("No valid Token found!");
       })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error();
+        }
+      })
       .then(parsedRes => {
         const events = [];
         for (let key in parsedRes) {
@@ -113,7 +150,13 @@ export const deleteEvent = key => {
           }
         );
       })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error();
+        }
+      })
       .then(parsedRes => {
         console.log("Event Deleted!");
       })

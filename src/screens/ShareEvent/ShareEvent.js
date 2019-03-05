@@ -18,39 +18,11 @@ import EventInput from "../../components/EventInput/EventInput";
 import PickImage from "../../components/PickImage/PickImage";
 import PickLocation from "../../components/PickLocation/PickLocation";
 import validate from "../../utility/validation";
+import { startAddEvent } from "../../store/actions/index";
 
 class ShareEventScreen extends Component {
   static navigatorStyle = {
     navBarButtonColor: "black"
-  };
-
-  state = {
-    controls: {
-      eventName: {
-        value: "",
-        valid: false,
-        touched: false,
-        validationRules: {
-          notEmpty: true
-        }
-      },
-      eventDescription: {
-        value: "",
-        valid: false,
-        touched: false,
-        validationRules: {
-          notEmpty: true
-        }
-      },
-      location: {
-        value: null,
-        valid: false
-      },
-      image: {
-        value: null,
-        valid: false
-      }
-    }
   };
 
   constructor(props) {
@@ -58,7 +30,54 @@ class ShareEventScreen extends Component {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
   }
 
+  componentWillMount() {
+    this.reset();
+  }
+
+  reset = () => {
+    this.setState({
+      controls: {
+        eventName: {
+          value: "",
+          valid: false,
+          touched: false,
+          validationRules: {
+            notEmpty: true
+          }
+        },
+        eventDescription: {
+          value: "",
+          valid: false,
+          touched: false,
+          validationRules: {
+            notEmpty: true
+          }
+        },
+        location: {
+          value: null,
+          valid: false
+        },
+        image: {
+          value: null,
+          valid: false
+        }
+      }
+    });
+  };
+
+  componentDidUpdate() {
+    if (this.props.eventAdded) {
+      this.props.navigator.switchToTab({ tabIndex: 0 });
+      // this.props.onStartAddEvent();
+    }
+  }
+
   onNavigatorEvent = event => {
+    if (event.type === "ScreenChangedEvent") {
+      if (event.id === "willAppear") {
+        this.props.onStartAddEvent();
+      }
+    }
     if (event.type === "NavBarButtonPress") {
       if (event.id === "sideDrawerToggle") {
         this.props.navigator.toggleDrawer({
@@ -112,6 +131,9 @@ class ShareEventScreen extends Component {
     ];
     this.props.onAddEvent(event);
     alert("Event/Drop added");
+    this.reset();
+    this.imagePicker.reset();
+    this.locationPicker.reset();
   };
 
   imagePickedHandler = image => {
@@ -161,8 +183,14 @@ class ShareEventScreen extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <PickImage onImagePicked={this.imagePickedHandler} />
-          <PickLocation onLocationPick={this.locationPickHandler} />
+          <PickImage
+            onImagePicked={this.imagePickedHandler}
+            ref={ref => (this.imagePicker = ref)}
+          />
+          <PickLocation
+            onLocationPick={this.locationPickHandler}
+            ref={ref => (this.locationPicker = ref)}
+          />
           <EventInput
             eventDataName={this.state.controls.eventName}
             onChangeName={this.eventNameChangedHandler}
@@ -202,13 +230,15 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.ui.isLoading
+    isLoading: state.ui.isLoading,
+    eventAdded: state.events.eventAdded
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddEvent: eventName => dispatch(addEvent(eventName))
+    onAddEvent: eventName => dispatch(addEvent(eventName)),
+    onStartAddEvent: () => dispatch(startAddEvent())
   };
 };
 

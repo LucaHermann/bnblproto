@@ -1,5 +1,7 @@
 export const SET_EVENTS = "SET_EVENTS";
 export const REMOVE_EVENT = "REMOVE_EVENT";
+export const EVENT_ADDED = "EVENT_ADDED";
+export const START_ADD_EVENT = "START_ADD_EVENT";
 
 export const TRY_AUTH = "TRY_AUTH";
 
